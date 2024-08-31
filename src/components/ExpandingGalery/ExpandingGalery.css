@@ -1,0 +1,42 @@
+
+.galery{
+    margin: auto;
+    display: flex;
+    gap: 6px;
+    width: 95%;
+}
+
+.galery-card{
+    position: relative;
+    left: 0;
+    /* width: 80px; */
+    border-radius: 4px;
+    padding: 4px;
+    height: 50vh;
+    background-color: white;
+    transition: 0.4s ease-in-out;
+    flex: 1;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 20px 20px, rgba(0, 0, 0, 0.08) 0px -12px 30px, rgba(0, 0, 0, 0.08) 0px 4px 6px, rgba(0, 0, 0, 0.1) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+}
+
+.galery-card:hover{
+    flex: 2.5;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.galery-card img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.galery-card h3{
+    text-shadow: 0px 0px 5px #6c757d;
+    text-wrap: nowrap;
+    position: absolute;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
