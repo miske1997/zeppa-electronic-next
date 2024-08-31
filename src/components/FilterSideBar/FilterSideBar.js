@@ -3,8 +3,6 @@ import { Accordion, Form, ListGroup } from "react-bootstrap"
 import "./FilterSideBar.css"
 import { useEffect } from "react";
 
-
-
 function FilterSideBar({ filters = [] }) {
 
     // const navigate = useNavigate();

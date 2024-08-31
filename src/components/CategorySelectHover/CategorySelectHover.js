@@ -1,14 +1,18 @@
 "use client"
 import { ListGroup } from "react-bootstrap";
 import "./CategorySelectHover.css"
-function CategorySelectHover({onCategoryClick = () => {}, categories = [] }) {
+import Link from "next/link";
+
+function CategorySelectHover({categories = [] }) {
 
     function RenderCategoriy(category) {
         if (!category.categoryNames)
             return ""
         return category.categoryNames.map((categoryName, index) => {
-            return (<ListGroup.Item onClick={()=> onCategoryClick(category.categorys[index])}>
-                {categoryName}
+            return (<ListGroup.Item>
+                <Link href={`/browse/${category.categorys[index]}`}>
+                    {categoryName}
+                </Link>
             </ListGroup.Item>)
         })
     }
