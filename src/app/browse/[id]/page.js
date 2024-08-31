@@ -1,46 +1,37 @@
-import { useNavigate, useParams } from 'react-router-dom';
-import ArticleGrid from '../../components/ArticleGrid/ArticleGrid';
+import CustomToggle from "@/components/CustomToggle/CustomeToggle";
 import "./BrowsePage.css"
-import { Breadcrumb, Button, Stack } from 'react-bootstrap';
-import CustomToggle from '../../components/CustomToggle/CustomeToggle';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectCategories } from '../../store/slices/generalSlice';
-import { fetchGeneralData } from '../../store/effects/generalDataEffects';
-import { useEffect, useState } from 'react';
-import { filterByNameAsc, filterByNameDesc, filterByPopularity, filterByPriceAsc, filterByPriceDesc, selectArticles, selectCategory, selectFilters } from '../../store/slices/categorySlice';
-import { fetchCategory, fetchCategoryArticlesById, fetchFiltersForCategory } from '../../store/effects/categoryEffects';
-import FilterSelect from '../../components/FilterSelect/FilterSelect';
-import { setArticle } from '../../store/slices/articleSlice';
-import { selectArticlesInCart } from '../../store/slices/cartSlice';
-import TablePagination from '../../components/TablePagination/TablePagination';
-import FilterSideBar from '../../components/FilterSideBar/FilterSideBar';
-import FilterChips from '../../components/FilterChips/FilterChips';
-import GridStyleSelect from '../../components/Helpers/GridStyleSelect/GridStyleSelect';
-import ArticleList from '../../components/ArticleList/ArticleList';
-import { GetPopularCategorys } from '../../services/categoryService';
+import { Breadcrumb, Stack } from 'react-bootstrap';
+import GridStyleSelect from "@/components/Helpers/GridStyleSelect/GridStyleSelect";
+import FilterSideBar from "@/components/FilterSideBar/FilterSideBar";
+import FilterChips from "@/components/FilterChips/FilterChips";
+import ArticleGrid from "@/components/ArticleGrid/ArticleGrid";
+import ArticleList from "@/components/ArticleList/ArticleList";
+import TablePagination from "@/components/TablePagination/TablePagination";
+import { GetCategory, GetFiltersForCategory } from "@/services/categoryService";
+import { GetAllArticlesForCategory } from "@/services/articleService";
+
 
 const filterMap = [
-    filterByNameAsc,
-    filterByNameDesc,
-    filterByPopularity,
-    filterByPriceAsc,
-    filterByPriceDesc,
+    // filterByNameAsc,
+    // filterByNameDesc,
+    // filterByPopularity,
+    // filterByPriceAsc,
+    // filterByPriceDesc,
 ]
 
-async function BrowsePage() {
-    //const [showFilters, setShowFilters] = useState(false)
-    //const [gridDisplayType, setGridDisplayType] = useState("grid")
+async function BrowsePage({params}) {
+    const showFilters = true
+    const gridDisplayType = "grid"
     // const categories = useSelector(selectCategories)
-    // const filters = useSelector(selectFilters)
-    // const articlesList = useSelector(selectArticles)
-    // const articlesInCart = useSelector(selectArticlesInCart)
-    // const category = useSelector(selectCategory)
-
+    const filters = await GetFiltersForCategory(params.id) // useSelector(selectFilters)
+    const articlesList = await GetAllArticlesForCategory(params.id) //useSelector(selectArticles)
+    const articlesInCart = [] // useSelector(selectArticlesInCart)
+    const category = await GetCategory(params.id)
     // const dispatch = useDispatch()
 
     // let { categoryId } = useParams("categoryId");
-    // const currentPage = new URL(window.location).searchParams.get("page") ?? 1
-    // const pageSize = 8
+    const currentPage = 1 // new URL(window.location).searchParams.get("page") ?? 1
+    const pageSize = 8
 
     // let navigate = useNavigate()
 
@@ -51,19 +42,10 @@ async function BrowsePage() {
     //     dispatch(fetchFiltersForCategory(categoryId))
     // }, [categoryId]);
 
-    function OnArticleClick(article) {
-        // setArticle(article)
-        // navigate("/article/" + categoryId + "/" + article.id ?? 0)
-    }
-
     function OnCategoryClick(categorieRef) {
         // dispatch(fetchCategoryArticlesById(categorieRef))
         // dispatch(fetchFiltersForCategory(categorieRef))
         // navigate("/browse/" + categorieRef ?? '')
-    }
-
-    function OnFilterSelect(filter){
-        // dispatch(filterMap[filter]())
     }
 
     function RenderFilters(){
@@ -82,24 +64,21 @@ async function BrowsePage() {
 
     return (
         <main className='browse-page-main'>
-            {/* <div className='categorys'>
-                <CategorySelect onCategoryClick={OnCategoryClick} activeCategory={categoryId} categories={categories}></CategorySelect>
-            </div> */}
-            <Breadcrumb className='bread-crumbs'>
+            {/* <Breadcrumb className='bread-crumbs'>
                 <Breadcrumb.Item>Pocetna</Breadcrumb.Item>
                 <Breadcrumb.Item>{GetMainCategory()}</Breadcrumb.Item>
                 <Breadcrumb.Item>{category.name}</Breadcrumb.Item>
-            </Breadcrumb>
+            </Breadcrumb> */}
             <div className='name-container'>
                 <div className='category-name'>
                     {category.name}
                 </div>
                 <div style={{flexGrow: '1'}}></div>
-                <Stack style={{alignItems: "center"}} gap={1}  direction='horizontal'>
+                {/* <Stack style={{alignItems: "center"}} gap={1}  direction='horizontal'>
                     <p style={{margin: "0"}}>Sortiranje prema:</p>
-                    <CustomToggle onValueChanged={OnFilterSelect}></CustomToggle>
-                </Stack>
-                <GridStyleSelect displayType={gridDisplayType} setDisplayType={setGridDisplayType}></GridStyleSelect>
+                    <CustomToggle></CustomToggle>
+                </Stack> */}
+                <GridStyleSelect displayType={gridDisplayType} ></GridStyleSelect>
             </div>
             <div className='articles-grid-controlls'>
                 {/* <div className='controlles'>
@@ -116,7 +95,7 @@ async function BrowsePage() {
                 <div style={{width: "100%"}}>
                     <FilterChips></FilterChips>
                     {gridDisplayType === "grid" ?
-                    <ArticleGrid articlesInCart={articlesInCart} onArticleClick={OnArticleClick} articleList={articlesList.slice((currentPage - 1) * pageSize, Math.min(articlesList.length, (currentPage - 1) * pageSize + pageSize))}></ArticleGrid>
+                    <ArticleGrid articlesInCart={articlesInCart} articleList={articlesList.slice((currentPage - 1) * pageSize, Math.min(articlesList.length, (currentPage - 1) * pageSize + pageSize))}></ArticleGrid>
                     :
                     <ArticleList articlesInCart={articlesInCart} onArticleClick={OnArticleClick} articleList={articlesList.slice((currentPage - 1) * pageSize, Math.min(articlesList.length, (currentPage - 1) * pageSize + pageSize))}></ArticleList>
                     }

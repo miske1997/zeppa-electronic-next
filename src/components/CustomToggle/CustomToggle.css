@@ -1,0 +1,11 @@
+.dropdown-toggle::after {
+    display:none !important;
+}
+
+.dropdown-basic-button  span {
+    display: block;
+    width: 6rem;
+}
+
+.dropdown-basic-button{
+}
