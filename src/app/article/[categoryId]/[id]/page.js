@@ -7,6 +7,7 @@ import Carousel from "@/components/Carousel/Carousel";
 import { GetArticleById } from "@/services/articleService";
 import Image from 'next/image';
 import ArticleTabs from '@/components/ArticleTabs/ArticleTabs';
+import ArticleModifier from '@/components/ArticleModifier/ArticleModifier';
 
 
 async function ArticlePage({ params }) {
@@ -44,47 +45,18 @@ async function ArticlePage({ params }) {
         // dispatch(removeArticleFromCart(article.id ?? 0))
     }
     function getModifiers() {
-        // let modifierArray = []
-        // for (const key in article) {
-        //     if (Object.hasOwnProperty.call(article, key) && Array.isArray(article[key])) {
-        //         modifierArray.push({ name: key, values: article[key] })
-        //     }
-        // }
-        // return modifierArray
+        let modifierArray = []
+        for (const key in article) {
+            if (Object.hasOwnProperty.call(article, key) && Array.isArray(article[key])) {
+                modifierArray.push({ name: key, values: article[key] })
+            }
+        }
+        return modifierArray
     }
     function renderArticleModifiers() {
-        // return getModifiers().map(modifier => {
-
-        //     return (
-        //         <div>
-        //             <p>
-        //                 {`${modifier.name} : `}
-        //             </p>
-        //             <Form.Select onChange={(event) => { setModifiers(modifiers => { return { ...modifiers, [modifier.name]: event.target.value } }) }} style={{ width: "min-content" }} aria-label="Default select example">
-        //                 {modifier.values.map(value => {
-        //                     return (
-        //                         <option>{value}</option>
-        //                     )
-        //                 })}
-
-        //             </Form.Select>
-        //         </div>
-        //     )
-        // })
-    }
-
-    function renderSpecifications() {
-        // let specs = article.specification.split("\n")
-        // specs = specs.map(spec => spec.split(":"))
-        // console.log(specs);
-        // return specs.map(spec => {
-        //     return (
-        //         <tr>
-        //             <td>{spec[0]}</td>
-        //             <td>{spec[1]}</td>
-        //         </tr>
-        //     )
-        // })
+        return getModifiers().map(modifier => {
+            return(<ArticleModifier modifier={modifier}></ArticleModifier>)
+        })
     }
 
     function renderAddToCartButton() {
@@ -117,7 +89,6 @@ async function ArticlePage({ params }) {
                         <h2 className="fs-1">
                             {article.name}
                         </h2>
-                        <p>TR2N109</p>
                         <div style={{ flexGrow: "1" }}></div>
                         {/* <div className="m-3">
                             <span>Kolicina</span>

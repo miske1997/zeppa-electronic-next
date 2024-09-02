@@ -2,9 +2,11 @@
 
 import { Tab, Table, Tabs } from "react-bootstrap";
 
-function ArticleTabs({ specification, description }) {
+function ArticleTabs({ specification = [], description = "" }) {
 
     function renderSpecifications() {
+        if (!specification)
+            return
         let specs = specification.split("\n")
         specs = specs.map(spec => spec.split(":"))
         console.log(specs);
