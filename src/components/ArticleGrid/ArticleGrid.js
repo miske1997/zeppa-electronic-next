@@ -4,9 +4,10 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ArticleCard from '../ArticleCard/ArticleCard';
 import './ArticleGrid.css'
+import { GetAllArticlesForCategory } from '@/services/articleService';
 
-function ArticleGrid({articlesInCart = [],categoryId = "", articleList = []}) {
-    // xs={{span: 8}} sm={{span: 8}} md={{span: 4}} xl={{span: 2}}
+async function ArticleGrid({articlesInCart = [],categoryId }) {
+    const articleList = await GetAllArticlesForCategory(categoryId)
 
     function IsArticleInCart(article){
         // for (const articleInCart of articlesInCart) {
@@ -20,7 +21,7 @@ function ArticleGrid({articlesInCart = [],categoryId = "", articleList = []}) {
     function RenderRow(articleSubList) {
         return articleSubList.map(article => {
             return (
-                <Col  xs={{span: 8}} sm={{span: 8}} lg={{span: 4}}  xl={{span: 3}}>
+                <Col key={article.id}  xs={{span: 8}} sm={{span: 8}} lg={{span: 4}}  xl={{span: 3}}>
                     <ArticleCard categoryId={categoryId} articleInCart={IsArticleInCart(article)} article={article} imageSrc={article.imageSrc} ></ArticleCard>
                 </Col>
             )
@@ -28,6 +29,8 @@ function ArticleGrid({articlesInCart = [],categoryId = "", articleList = []}) {
     }
 
     function RenderArticles(){
+        console.log(articleList.length);
+        
         const itemsInRow = 4
         const listClone = [...articleList] 
         const rows = []

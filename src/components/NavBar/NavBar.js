@@ -10,7 +10,6 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import "./NavBar.css"
-import { SSRProvider } from 'react-bootstrap';
 import Link from 'next/link';
 
 function NavBar() {
@@ -18,7 +17,6 @@ function NavBar() {
 
 
     return (
-        <SSRProvider>
             <Navbar sticky='top' expand="md" bg='dark' data-bs-theme="dark" className="bg-body-tertiary navbar-main ">
                 <Container fluid>
                     <Navbar.Brand style={{ fontSize: "inherit" }} href="/">ZeppaElectronika</Navbar.Brand>
@@ -35,10 +33,10 @@ function NavBar() {
                         </Offcanvas.Header>
                         <Offcanvas.Body>
                             <Nav className="justify-content-end flex-grow-1 pe-3">
-                                <Link href="/admin" passHref>
+                                <Link className='nav-link' href="/admin" passHref>
                                     Admin
                                 </Link>
-                                <Link href="/home" passHref>
+                                <Link className='nav-link' href="/home" passHref>
                                    Naslovna
                                 </Link>
                                 <NavDropdown
@@ -48,8 +46,8 @@ function NavBar() {
                                     {/* <CategorySelect onCategoryClick={OnCategoryClick} activeCategory={categoryId} categories={categories}></CategorySelect> */}
                                     {/* {RenderProducts()} */}
                                 </NavDropdown>
-                                <Nav.Link onClick={() => GoTo("/about")}>O Nama</Nav.Link>
-                                <Nav.Link onClick={() => GoTo("/contact")}>Kontakt</Nav.Link>
+                                <Link className='nav-link' href="/about" passHref>O Nama</Link>
+                                <Link className='nav-link' href="/contact" passHref>Kontakt</Link>
                                 <Form className="d-flex">
                                     <Form.Control
                                         type="search"
@@ -68,9 +66,8 @@ function NavBar() {
                     </Navbar.Offcanvas>
 
                 </Container>
+                {/* <SideCart show={showSideCart} handleClose={handleHide}></SideCart> */}
             </Navbar>
-            {/* <SideCart show={showSideCart} handleClose={handleHide}></SideCart> */}
-        </SSRProvider>
     );
 }
 

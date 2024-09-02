@@ -23,14 +23,14 @@ function ArticleCard({articleInCart = false, categoryId = "", article = {id: 0, 
     }
 
     return (
-            <Card onClick={() => OnArticleClick()} className="article-card" >
+            <div onClick={() => OnArticleClick()} className="article-card card" >
                 {articleInCart === true ? (<div className='in-cart-icon'>
                     <FontAwesomeIcon className='icon' icon={faCartShopping}/>
                 </div>) : ""} 
-                <Card.Img variant="top" src={`/${imageSrc}`} />
+                <img className='card-img-top' src={`/${imageSrc}`} />
                 <div style={{backgroundColor: "black", height: "1px", width: "98%", margin: "auto"}}></div>
-                <Card.Body>
-                    <Card.Title className='card-title'>{article.name}</Card.Title>
+                <div className='card-body'>
+                    <div className='card-titlee card-title h5'>{article.name}</div>
                     <div className='card-info'>
                         <div>
                             <span className='article-cost'>{article.cost}</span>
@@ -41,8 +41,8 @@ function ArticleCard({articleInCart = false, categoryId = "", article = {id: 0, 
                         <FontAwesomeIcon className='article-cart' onClick={AddToCart} icon={faCartShopping}/>
                     </div>
 
-                </Card.Body>
-            </Card>
+                </div>
+            </div>
     );
 }
 

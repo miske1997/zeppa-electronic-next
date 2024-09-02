@@ -19,12 +19,12 @@ const filterMap = [
     // filterByPriceDesc,
 ]
 
-async function BrowsePage({params}) {
+const BrowsePage = async ({params}) => {
     const showFilters = true
     const gridDisplayType = "grid"
     // const categories = useSelector(selectCategories)
     const filters = await GetFiltersForCategory(params.id) // useSelector(selectFilters)
-    const articlesList = await GetAllArticlesForCategory(params.id) //useSelector(selectArticles)
+    const articlesList = []  //useSelector(selectArticles)
     const articlesInCart = [] // useSelector(selectArticlesInCart)
     const category = await GetCategory(params.id)
     // const dispatch = useDispatch()
