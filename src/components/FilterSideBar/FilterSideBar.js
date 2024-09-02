@@ -1,58 +1,65 @@
 "use client"
 import { Accordion, Form, ListGroup } from "react-bootstrap"
 import "./FilterSideBar.css"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
+import { useRouter } from 'next/navigation'
 
 function FilterSideBar({ filters = [] }) {
 
     // const navigate = useNavigate();
     // const dispatch = useDispatch()
-    const checkedFilters = [] //useSelector(selectCheckedFilters)
+    const searchParams = useSearchParams();
+    const pathname = usePathname();
+    const router = useRouter();
+    const [checkedFilters, setCheckedFilters] = useState([])
     // const url = new URL(window.location);
     // const filterCurrent = url.searchParams
 
-
-
-
     useEffect(() => {
-        // for (const entry of filterCurrent.entries()) {
-        //     if (entry[0] == "sort")
-        //         continue;
-        //     console.log(entry);
-        //     const values = entry[1].split("_")
-        //     const paramName = entry[0]
-        //     for (const value of values) {
-        //         dispatch(setFilter({ name: paramName, value: value }))
-        //     }
-        // }
-    }, []);
-
+        const params = new URLSearchParams(searchParams);
+        const parsedFilters = []
+        for (const param of params.entries()) {
+            parsedFilters.push({name : param[0], options: param[1].split("_") })
+        }
+        setCheckedFilters(parsedFilters)
+    }, [searchParams]);
 
     function AddUrlParam(option, paramName) {
-        // let filter = url.searchParams.get(paramName) ?? ""
-        // if (!filter || filter.length == 0){
-        //     filter = option
-        // }
-        // else{
-        //     filter = filter + "_" + option
-        // }
-        // dispatch(setFilter({ name: paramName, value: option }))
-        // url.searchParams.set(paramName, filter);
-        // navigate(url.search)
+        const params = new URLSearchParams(searchParams);
+        let filter = params.get(paramName) ?? ""
+        if (!filter || filter.length == 0){
+            filter = option
+        }
+        else{
+            filter = filter + "_" + option
+        }
+        params.set(paramName, filter);
+        router.replace(`${pathname}?${params.toString()}`);
     }
     function RemoveParam(option, paramName) {
-        // dispatch(removeFilter({name: paramName, value: option}))
-        // url.searchParams.delete(paramName)
-        // navigate(url.search)
+        const params = new URLSearchParams(searchParams);
+        let filter = params.get(paramName) ?? "";
+        const options = filter.split("_")
+        console.log(options);
+        
+        if (options.length === 1){
+            params.delete(paramName)
+        }
+        else{
+            options.splice(options.findIndex(o => o === option), 1)
+            params.set(paramName, options.join("_"))
+        }
+        router.replace(`${pathname}?${params.toString()}`);
     }
 
-    function FilterClicked(option, paramName){
-        // if (checkedFilters.find(f => f.name === paramName)?.options.includes(option)){
-        //     RemoveParam(option, paramName)
-        // }
-        // else{
-        //     AddUrlParam(option, paramName)
-        // }
+    function FilterClicked(option, paramName) {
+        if (checkedFilters.find(f => f.name === paramName)?.options.includes(option)){
+            RemoveParam(option, paramName)
+        }
+        else{
+            AddUrlParam(option, paramName)
+        }
     }
 
     function RenderFilter(filter) {

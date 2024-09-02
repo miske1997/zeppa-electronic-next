@@ -6,9 +6,9 @@ import ArticleCard from '../ArticleCard/ArticleCard';
 import './ArticleGrid.css'
 import { GetAllArticlesForCategory } from '@/services/articleService';
 
-async function ArticleGrid({articlesInCart = [],categoryId, articleList }) {
+async function ArticleGrid({ articlesInCart = [], categoryId, articleList }) {
 
-    function IsArticleInCart(article){
+    function IsArticleInCart(article) {
         // for (const articleInCart of articlesInCart) {
         //     if (articleInCart.id === article.id){
         //         return true
@@ -20,24 +20,24 @@ async function ArticleGrid({articlesInCart = [],categoryId, articleList }) {
     function RenderRow(articleSubList) {
         return articleSubList.map(article => {
             return (
-                <Col key={article.id}  xs={{span: 8}} sm={{span: 8}} lg={{span: 4}}  xl={{span: 3}}>
+                <Col key={article.id} xs={{ span: 8 }} sm={{ span: 8 }} lg={{ span: 4 }} xl={{ span: 3 }}>
                     <ArticleCard categoryId={categoryId} articleInCart={IsArticleInCart(article)} article={article} imageSrc={article.imageSrc} ></ArticleCard>
                 </Col>
             )
         })
     }
 
-    function RenderArticles(){
-        
+    function RenderArticles() {
+
         const itemsInRow = 4
-        const listClone = [...articleList] 
+        const listClone = [...articleList]
         const rows = []
-        while(listClone.length > 0){
-            if(listClone.length < itemsInRow){
-                rows.push((<Row  className="top-buffer justify-content-center" > {RenderRow(listClone.splice(0, listClone.length))} </Row>))
+        while (listClone.length > 0) {
+            if (listClone.length < itemsInRow) {
+                rows.push((<Row className="top-buffer justify-content-center" > {RenderRow(listClone.splice(0, listClone.length))} </Row>))
             }
-            else{
-                rows.push((<Row   className="top-buffer justify-content-center" > {RenderRow(listClone.splice(0, itemsInRow))} </Row>))
+            else {
+                rows.push((<Row className="top-buffer justify-content-center" > {RenderRow(listClone.splice(0, itemsInRow))} </Row>))
             }
         }
         return rows

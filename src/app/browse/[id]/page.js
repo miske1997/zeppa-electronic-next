@@ -19,34 +19,33 @@ const filterMap = [
     // filterByPriceDesc,
 ]
 
-const BrowsePage = async ({params}) => {
+const BrowsePage = async ({params, searchParams}) => {
+    
     const showFilters = true
     const gridDisplayType = "grid"
-    // const categories = useSelector(selectCategories)
-    const filters = await GetFiltersForCategory(params.id) // useSelector(selectFilters)
-    const articlesList = await GetAllArticlesForCategory(params.id)  //useSelector(selectArticles)
+    // const categories = useSelector(selectCategories) OVI GLAVNI ZBOG BREAD CRUMBS
+    const filters = await GetFiltersForCategory(params.id)
+    let articlesList = await GetAllArticlesForCategory(params.id)
     const articlesInCart = [] // useSelector(selectArticlesInCart)
     const category = await GetCategory(params.id)
-    // const dispatch = useDispatch()
 
-    // let { categoryId } = useParams("categoryId");
+
     const currentPage = 1 // new URL(window.location).searchParams.get("page") ?? 1
     const pageSize = 8
 
-    // let navigate = useNavigate()
-
-    // useEffect(() => {
-    //     dispatch(fetchGeneralData())
-    //     dispatch(fetchCategory(categoryId))
-    //     dispatch(fetchCategoryArticlesById(categoryId))
-    //     dispatch(fetchFiltersForCategory(categoryId))
-    // }, [categoryId]);
-
-    function OnCategoryClick(categorieRef) {
-        // dispatch(fetchCategoryArticlesById(categorieRef))
-        // dispatch(fetchFiltersForCategory(categorieRef))
-        // navigate("/browse/" + categorieRef ?? '')
+    const filterParams = new URLSearchParams(searchParams);
+    const filterToApplay = []
+    for (const param of filterParams.entries()) {
+        filterToApplay.push({name : param[0], options: param[1].split("_") })
     }
+    filterToApplay.forEach(filter => {
+        articlesList = articlesList.filter(article => {
+            if (!Object.hasOwn(article, filter.name))
+                return false
+            return filter.options.includes(article[filter.name])
+        })
+    });
+
 
     function RenderFilters(){
         // return filters.map(filter => {
