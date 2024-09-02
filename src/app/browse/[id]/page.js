@@ -95,7 +95,7 @@ async function BrowsePage({params}) {
                 <div style={{width: "100%"}}>
                     <FilterChips></FilterChips>
                     {gridDisplayType === "grid" ?
-                    <ArticleGrid articlesInCart={articlesInCart} articleList={articlesList.slice((currentPage - 1) * pageSize, Math.min(articlesList.length, (currentPage - 1) * pageSize + pageSize))}></ArticleGrid>
+                    <ArticleGrid categoryId={params.id} articlesInCart={articlesInCart} articleList={articlesList.slice((currentPage - 1) * pageSize, Math.min(articlesList.length, (currentPage - 1) * pageSize + pageSize))}></ArticleGrid>
                     :
                     <ArticleList articlesInCart={articlesInCart} onArticleClick={OnArticleClick} articleList={articlesList.slice((currentPage - 1) * pageSize, Math.min(articlesList.length, (currentPage - 1) * pageSize + pageSize))}></ArticleList>
                     }

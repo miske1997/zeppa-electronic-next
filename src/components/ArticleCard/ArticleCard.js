@@ -3,11 +3,13 @@ import Card from 'react-bootstrap/Card';
 import './ArticleCard.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { useRouter } from 'next/navigation'
 
-function ArticleCard({articleInCart = false, article = {id: 0, name: '', cost: 0}, imageSrc = 'chip.jpg'}) {
+function ArticleCard({articleInCart = false, categoryId = "", article = {id: 0, name: '', cost: 0}, imageSrc = 'chip.jpg'}) {
 
     // const dispatch = useDispatch()
     // const { categoryId } = useParams("categoryId")
+    const router = useRouter()
 
     function AddToCart(event){
         // event.stopPropagation();
@@ -15,6 +17,7 @@ function ArticleCard({articleInCart = false, article = {id: 0, name: '', cost: 0
     }
 
     function OnArticleClick() {
+        router.push(`/article/${categoryId}/${article.id}`)
         // setArticle(article)
         // navigate("/article/" + categoryId + "/" + article.id ?? 0)
     }

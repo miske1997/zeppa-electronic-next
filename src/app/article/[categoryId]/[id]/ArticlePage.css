@@ -1,0 +1,51 @@
+.article-page-main{
+    padding-top: 3rem;
+}
+
+.article-top{
+    /* height: 40rem; */
+    margin-top: 10rem;
+}
+
+
+
+.article-image-con{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.article-image-con img{
+    width: 100%;
+}
+.article-tabs{
+    padding-top: 5rem;
+    white-space: pre-line;
+    line-break: anywhere;
+}
+
+.article-description{
+    text-align: left;
+    padding-top: 3rem;
+    padding-left: 2rem;
+    padding-right: 4rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.article-description .modifiers{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-y: auto;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+
+@media (min-width: 768px){
+    
+    .article-description {
+        padding-top: 1rem;
+    }
+}

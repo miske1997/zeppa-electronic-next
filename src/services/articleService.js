@@ -1,7 +1,8 @@
+import db from "@/configs/firebase";
 import {  addDoc, collection, deleteDoc, doc, getDoc, getDocs, increment, setDoc, updateDoc } from "firebase/firestore";
-import db from "../configs/firebase";
 
 
+    
 export async function GetAllArticlesForCategory(categoryId){
     const querySnapshot  = await getDocs(collection(db, "category", categoryId, "articles"));
     let data = []
@@ -10,7 +11,8 @@ export async function GetAllArticlesForCategory(categoryId){
 }
 
 export async function GetArticleById(categoryId, articleId){
-    return await getDoc(doc(db, "category", categoryId, "articles", articleId))
+    const querySnapshot = await getDoc(doc(db, "category", categoryId, "articles", articleId))
+    return {...querySnapshot.data(), id: querySnapshot.id}
 }
 
 export async function CreateArticle(categoryId, article){

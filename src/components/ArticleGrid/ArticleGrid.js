@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import ArticleCard from '../ArticleCard/ArticleCard';
 import './ArticleGrid.css'
 
-function ArticleGrid({articlesInCart = [], articleList = []}) {
+function ArticleGrid({articlesInCart = [],categoryId = "", articleList = []}) {
     // xs={{span: 8}} sm={{span: 8}} md={{span: 4}} xl={{span: 2}}
 
     function IsArticleInCart(article){
@@ -21,7 +21,7 @@ function ArticleGrid({articlesInCart = [], articleList = []}) {
         return articleSubList.map(article => {
             return (
                 <Col  xs={{span: 8}} sm={{span: 8}} lg={{span: 4}}  xl={{span: 3}}>
-                    <ArticleCard articleInCart={IsArticleInCart(article)} article={article} imageSrc={article.imageSrc} ></ArticleCard>
+                    <ArticleCard categoryId={categoryId} articleInCart={IsArticleInCart(article)} article={article} imageSrc={article.imageSrc} ></ArticleCard>
                 </Col>
             )
         })
