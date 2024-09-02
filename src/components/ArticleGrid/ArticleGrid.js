@@ -6,8 +6,7 @@ import ArticleCard from '../ArticleCard/ArticleCard';
 import './ArticleGrid.css'
 import { GetAllArticlesForCategory } from '@/services/articleService';
 
-async function ArticleGrid({articlesInCart = [],categoryId }) {
-    const articleList = await GetAllArticlesForCategory(categoryId)
+async function ArticleGrid({articlesInCart = [],categoryId, articleList }) {
 
     function IsArticleInCart(article){
         // for (const articleInCart of articlesInCart) {
@@ -29,7 +28,6 @@ async function ArticleGrid({articlesInCart = [],categoryId }) {
     }
 
     function RenderArticles(){
-        console.log(articleList.length);
         
         const itemsInRow = 4
         const listClone = [...articleList] 
