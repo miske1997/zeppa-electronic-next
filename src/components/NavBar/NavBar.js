@@ -11,12 +11,17 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import "./NavBar.css"
 import Link from 'next/link';
+import SideCart from '../SideCart/SideCart';
+import { useState } from 'react';
 
 function NavBar() {
 
+    const [showSideCart, setShowSideCart] = useState(false)
 
+    const handleHide = () => setShowSideCart(false);
 
     return (
+        <>
             <Navbar sticky='top' expand="md" bg='dark' data-bs-theme="dark" className="bg-body-tertiary navbar-main ">
                 <Container fluid>
                     <Navbar.Brand style={{ fontSize: "inherit" }} href="/">ZeppaElectronika</Navbar.Brand>
@@ -37,7 +42,7 @@ function NavBar() {
                                     Admin
                                 </Link>
                                 <Link className='nav-link' href="/home" passHref>
-                                   Naslovna
+                                    Naslovna
                                 </Link>
                                 <NavDropdown
                                     title="Proizvodi"
@@ -66,8 +71,9 @@ function NavBar() {
                     </Navbar.Offcanvas>
 
                 </Container>
-                {/* <SideCart show={showSideCart} handleClose={handleHide}></SideCart> */}
             </Navbar>
+            <SideCart show={showSideCart} handleClose={handleHide}></SideCart>
+        </>
     );
 }
 

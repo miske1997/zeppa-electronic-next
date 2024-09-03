@@ -8,6 +8,7 @@ import { GetArticleById } from "@/services/articleService";
 import Image from 'next/image';
 import ArticleTabs from '@/components/ArticleTabs/ArticleTabs';
 import ArticleModifier from '@/components/ArticleModifier/ArticleModifier';
+import AddToCartButton from '@/components/AddToCartButton/AddToCartButton';
 
 
 async function ArticlePage({ params }) {
@@ -104,7 +105,7 @@ async function ArticlePage({ params }) {
                             <input style={{ margin: 0, width: "5rem", textAlign: 'center' }} defaultValue={1} min={1} type="number"></input>
                         </div>
                         <div>
-                            <button type='button' className="m-1 btn btn-primary">Naruci</button>
+                            <AddToCartButton articleData={article}></AddToCartButton>
                             {renderAddToCartButton()}
                         </div>
                     </div>

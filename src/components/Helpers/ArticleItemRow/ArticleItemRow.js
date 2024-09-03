@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Image } from "react-bootstrap";
 import './ArticleItemRow.css'
 import { faX } from "@fortawesome/free-solid-svg-icons";
-import BadgeWithTooltip from "../../BadgeWithTooltip/BadgeWithTooltip";
+import BadgeWithTooltip from "@/components/BadgeWithTooltip/BadgeWithTooltip";
 
 function ArticleItemRow({onCartItemRemoveClick = () => {},  article = {name: '', imageSrc: '', amount: 1, cost: 0, modifiers: {}}}) {
 

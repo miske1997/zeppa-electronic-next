@@ -4,27 +4,58 @@ import './ArticleCard.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react';
 
-function ArticleCard({articleInCart = false, categoryId = "", article = {id: 0, name: '', cost: 0}, imageSrc = 'chip.jpg'}) {
+function ArticleCard({categoryId = "", article = {id: 0, name: '', cost: 0}, imageSrc = 'chip.jpg'}) {
 
     // const dispatch = useDispatch()
     // const { categoryId } = useParams("categoryId")
     const router = useRouter()
+    const [items, setItems] = useState(null);
+    const [inCart, setInCart] = useState(false)
 
-    function AddToCart(event){
-        // event.stopPropagation();
-        // dispatch(addArticleToCart({...article, amount: 1, categoryId: categoryId}))
+    useEffect(() => {
+        const cartItems = JSON.parse(localStorage.getItem('cartItems'));
+        console.log(cartItems);
+        
+        if (cartItems) {
+            setItems([...cartItems]);
+        }
+        else{
+            setItems([])
+        }
+    }, []);
+    useEffect(() => {
+        if (items === null)
+            return
+        console.log(items);
+
+        setInCart(items.find(item => item.id === article.id) !== undefined)
+
+        localStorage.setItem('cartItems', JSON.stringify(items));
+    }, [items]);
+
+
+    function AddArticleToCart(event){
+        event.stopPropagation()
+        const cartItems = JSON.parse(localStorage.getItem('cartItems'));
+        if (cartItems.find(item => item.id === article.id) !== undefined){
+            cartItems.splice(items.findIndex(i => i.id === article.id), 1)
+        }
+        else{
+            cartItems.push(article)
+        }
+        
+        setItems([...cartItems])
     }
 
     function OnArticleClick() {
         router.push(`/article/${categoryId}/${article.id}`)
-        // setArticle(article)
-        // navigate("/article/" + categoryId + "/" + article.id ?? 0)
     }
 
     return (
             <div onClick={() => OnArticleClick()} className="article-card card" >
-                {articleInCart === true ? (<div className='in-cart-icon'>
+                {inCart === true ? (<div className='in-cart-icon'>
                     <FontAwesomeIcon className='icon' icon={faCartShopping}/>
                 </div>) : ""} 
                 <img className='card-img-top' src={`/${imageSrc}`} />
@@ -38,7 +69,7 @@ function ArticleCard({articleInCart = false, categoryId = "", article = {id: 0, 
                         </div>
                         
                         <div style={{flexGrow: "1"}}></div>
-                        <FontAwesomeIcon className='article-cart' onClick={AddToCart} icon={faCartShopping}/>
+                        <FontAwesomeIcon className='article-cart' onClick={AddArticleToCart} icon={faCartShopping}/>
                     </div>
 
                 </div>
