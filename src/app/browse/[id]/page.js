@@ -12,16 +12,16 @@ import { GetAllArticlesForCategory } from "@/services/articleService";
 
 
 
-const filterMap = [
-    // filterByNameAsc,
-    // filterByNameDesc,
-    // filterByPopularity,
-    // filterByPriceAsc,
-    // filterByPriceDesc,
-]
+const filterMap = {
+    NameAsc: (a, b) => a.name > b.name ? 1 : -1,
+    NameDesc: (a, b) => a.name < b.name ? 1 : -1,
+    Popularity: (a, b) => a.buys < b.buys ? 1 : -1,
+    PriceAsc: (a, b) => a.cost > b.cost ? 1 : -1,
+    PriceDesc: (a, b) => a.cost < b.cost ? 1 : -1,
+}
 
-const BrowsePage = async ({params, searchParams}) => {
-    
+const BrowsePage = async ({ params, searchParams }) => {
+
     const showFilters = true
     const gridDisplayType = "grid"
     // const categories = useSelector(selectCategories) OVI GLAVNI ZBOG BREAD CRUMBS
@@ -31,32 +31,35 @@ const BrowsePage = async ({params, searchParams}) => {
     const category = await GetCategory(params.id)
 
     const urlParams = new URLSearchParams(searchParams)
-
+    const sortType = urlParams.get("sort") !== null ? urlParams.get("sort") : "Popularity"
     const currentPage = urlParams.get("page") !== null ? parseInt(urlParams.get("page")) : 1
     const pageSize = 16
 
     const filterParams = new URLSearchParams(searchParams);
     const filterToApplay = []
+
     for (const param of filterParams.entries()) {
-        filterToApplay.push({name : param[0], options: param[1].split("_") })
+        filterToApplay.push({ name: param[0], options: param[1].split("_") })
     }
+
     filterToApplay.forEach(filter => {
         articlesList = articlesList.filter(article => {
-            if (filter.name === "page")
+            if (filter.name === "page" || filter.name === "sort")
                 return true
             if (!Object.hasOwn(article, filter.name))
                 return false
             return filter.options.includes(article[filter.name])
         })
     });
+    
+    articlesList = articlesList.sort(filterMap[sortType])
 
-
-    function RenderFilters(){
+    function RenderFilters() {
         // return filters.map(filter => {
         //     return (<FilterSelect filterName={filter.name}  options={filter.options} paramName={filter.propName}></FilterSelect>)
         // })
     }
-    function GetMainCategory(){
+    function GetMainCategory() {
         // for (const categoryData of categories) {
         //     if (categoryData.categoryNames?.includes(category.name)){
         //         return categoryData.name
@@ -76,7 +79,7 @@ const BrowsePage = async ({params, searchParams}) => {
                 <div className='category-name'>
                     {category.name}
                 </div>
-                <div style={{flexGrow: '1'}}></div>
+                <div style={{ flexGrow: '1' }}></div>
                 {/* <Stack style={{alignItems: "center"}} gap={1}  direction='horizontal'>
                     <p style={{margin: "0"}}>Sortiranje prema:</p>
                     <CustomToggle></CustomToggle>
@@ -84,23 +87,23 @@ const BrowsePage = async ({params, searchParams}) => {
                 <GridStyleSelect displayType={gridDisplayType} ></GridStyleSelect>
             </div>
             <div className='articles-grid-controlls'>
-                {/* <div className='controlles'>
-                    <Button onClick={() => setShowFilters(show => !show)}>Filters</Button>
-                    <div style={{flexGrow: '1'}}></div>
-                    <CustomToggle onValueChanged={OnFilterSelect}></CustomToggle>
-                </div> */}
+                <div className='controlles'>
+                    {/* <Button onClick={() => setShowFilters(show => !show)}>Filters</Button> */}
+                    <div style={{ flexGrow: '1' }}></div>
+                    <CustomToggle></CustomToggle>
+                </div>
                 {showFilters === true ? (<div className='filters-con'>
                     {RenderFilters()}
                 </div>) : ""}
             </div>
             <div className='grid-container'>
                 <FilterSideBar filters={filters}></FilterSideBar>
-                <div style={{width: "100%"}}>
+                <div style={{ width: "100%" }}>
                     <FilterChips></FilterChips>
                     {gridDisplayType === "grid" ?
-                    <ArticleGrid categoryId={params.id} articlesInCart={articlesInCart} articleList={articlesList.slice((currentPage - 1) * pageSize, Math.min(articlesList.length, (currentPage - 1) * pageSize + pageSize))}></ArticleGrid>
-                    :
-                    <ArticleList articlesInCart={articlesInCart} onArticleClick={OnArticleClick} articleList={articlesList.slice((currentPage - 1) * pageSize, Math.min(articlesList.length, (currentPage - 1) * pageSize + pageSize))}></ArticleList>
+                        <ArticleGrid categoryId={params.id} articlesInCart={articlesInCart} articleList={articlesList.slice((currentPage - 1) * pageSize, Math.min(articlesList.length, (currentPage - 1) * pageSize + pageSize))}></ArticleGrid>
+                        :
+                        <ArticleList articlesInCart={articlesInCart} onArticleClick={OnArticleClick} articleList={articlesList.slice((currentPage - 1) * pageSize, Math.min(articlesList.length, (currentPage - 1) * pageSize + pageSize))}></ArticleList>
                     }
                 </div>
             </div>
