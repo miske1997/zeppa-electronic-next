@@ -5,8 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 
-function ArticleCard({categoryId = "", article = {id: 0, name: '', cost: 0}, imageSrc = 'chip.jpg'}) {
+function ArticleCard({ categoryId = "", article = { id: 0, name: '', cost: 0 }, imageSrc = 'chip.jpg' }) {
 
     // const dispatch = useDispatch()
     // const { categoryId } = useParams("categoryId")
@@ -17,11 +18,11 @@ function ArticleCard({categoryId = "", article = {id: 0, name: '', cost: 0}, ima
     useEffect(() => {
         const cartItems = JSON.parse(localStorage.getItem('cartItems'));
         console.log(cartItems);
-        
+
         if (cartItems) {
             setItems([...cartItems]);
         }
-        else{
+        else {
             setItems([])
         }
     }, []);
@@ -36,30 +37,28 @@ function ArticleCard({categoryId = "", article = {id: 0, name: '', cost: 0}, ima
     }, [items]);
 
 
-    function AddArticleToCart(event){
+    function AddArticleToCart(event) {
         event.stopPropagation()
+        event.preventDefault()
         const cartItems = JSON.parse(localStorage.getItem('cartItems'));
-        if (cartItems.find(item => item.id === article.id) !== undefined){
+        if (cartItems.find(item => item.id === article.id) !== undefined) {
             cartItems.splice(items.findIndex(i => i.id === article.id), 1)
         }
-        else{
+        else {
             cartItems.push(article)
         }
-        
+
         setItems([...cartItems])
     }
 
-    function OnArticleClick() {
-        router.push(`/article/${categoryId}/${article.id}`)
-    }
-
     return (
-            <div onClick={() => OnArticleClick()} className="article-card card" >
+        <Link style={{display: "block"}} className='article-card' href={`/article/${categoryId}/${article.id}`} passHref>
+            <div className="card" >
                 {inCart === true ? (<div className='in-cart-icon'>
-                    <FontAwesomeIcon className='icon' icon={faCartShopping}/>
-                </div>) : ""} 
+                    <FontAwesomeIcon className='icon' icon={faCartShopping} />
+                </div>) : ""}
                 <img className='card-img-top' src={`/${imageSrc}`} />
-                <div style={{backgroundColor: "black", height: "1px", width: "98%", margin: "auto"}}></div>
+                <div style={{ backgroundColor: "black", height: "1px", width: "98%", margin: "auto" }}></div>
                 <div className='card-body'>
                     <div className='card-titlee card-title h5'>{article.name}</div>
                     <div className='card-info'>
@@ -67,13 +66,14 @@ function ArticleCard({categoryId = "", article = {id: 0, name: '', cost: 0}, ima
                             <span className='article-cost'>{article.cost}</span>
                             .00 RSD
                         </div>
-                        
-                        <div style={{flexGrow: "1"}}></div>
-                        <FontAwesomeIcon className='article-cart' onClick={AddArticleToCart} icon={faCartShopping}/>
+
+                        <div style={{ flexGrow: "1" }}></div>
+                        <FontAwesomeIcon className='article-cart' onClick={AddArticleToCart} icon={faCartShopping} />
                     </div>
 
                 </div>
             </div>
+        </Link>
     );
 }
 
