@@ -1,10 +1,13 @@
 "use client"
 import { Pagination } from "react-bootstrap";
 import "./TablePagination.css"
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 function TablePagination({display = false, currentPage = 1, numOfPages = 1}) {
     
-    // const navigate = useNavigate();
+    const searchParams = useSearchParams();
+    const pathname = usePathname();
+    const router = useRouter();
 
     function RenderItems() {
         const start = Math.max(1, currentPage - 2)
@@ -19,9 +22,9 @@ function TablePagination({display = false, currentPage = 1, numOfPages = 1}) {
     }
 
     function AddUrlParam(pageNum){
-        // const url = new URL(window.location);
-        // url.searchParams.set("page", pageNum);
-        // navigate(url.search)
+        const params = new URLSearchParams(searchParams);
+        params.set("page", pageNum)
+        router.replace(`${pathname}?${params.toString()}`);
     }
 
     return (
@@ -32,7 +35,7 @@ function TablePagination({display = false, currentPage = 1, numOfPages = 1}) {
                 <Pagination.Prev onClick={() => AddUrlParam(Math.max(1, currentPage - 1))} />
                 {RenderItems()}
                 <Pagination.Next onClick={() => AddUrlParam(Math.min(numOfPages, currentPage + 1))}/>
-                <Pagination.Last onClick={() => AddUrlParam(numOfPages + 1)}/>
+                <Pagination.Last onClick={() => AddUrlParam(numOfPages)}/>
             </Pagination>
         </div>
     );

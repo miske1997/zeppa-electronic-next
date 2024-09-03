@@ -11,6 +11,7 @@ import { GetCategory, GetFiltersForCategory } from "@/services/categoryService";
 import { GetAllArticlesForCategory } from "@/services/articleService";
 
 
+
 const filterMap = [
     // filterByNameAsc,
     // filterByNameDesc,
@@ -29,9 +30,10 @@ const BrowsePage = async ({params, searchParams}) => {
     const articlesInCart = [] // useSelector(selectArticlesInCart)
     const category = await GetCategory(params.id)
 
+    const urlParams = new URLSearchParams(searchParams)
 
-    const currentPage = 1 // new URL(window.location).searchParams.get("page") ?? 1
-    const pageSize = 8
+    const currentPage = urlParams.get("page") !== null ? parseInt(urlParams.get("page")) : 1
+    const pageSize = 16
 
     const filterParams = new URLSearchParams(searchParams);
     const filterToApplay = []
@@ -40,6 +42,8 @@ const BrowsePage = async ({params, searchParams}) => {
     }
     filterToApplay.forEach(filter => {
         articlesList = articlesList.filter(article => {
+            if (filter.name === "page")
+                return true
             if (!Object.hasOwn(article, filter.name))
                 return false
             return filter.options.includes(article[filter.name])
