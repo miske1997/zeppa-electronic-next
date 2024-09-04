@@ -19,7 +19,7 @@ const CustomToggle = ({}) =>{
     router.replace(`${pathname}?${params.toString()}`);
   }
   return (
-    <DropdownButton className="dropdown-basic-button" title={
+    <DropdownButton variant="dark" className="dropdown-basic-button" title={
         <span>
           {`${filterCurrent}`} <FontAwesomeIcon icon={faFilter} />
         </span>

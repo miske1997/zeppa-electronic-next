@@ -54,9 +54,6 @@ function SideCart({ show = false, handleClose = () => { } }) {
 
         })
     }
-    function GoTo(url) {
-        navigate(url);
-    }
     return (
 
         <Offcanvas className="side-cart" placement={"end"} show={show} onHide={handleClose}>

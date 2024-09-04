@@ -1,0 +1,18 @@
+
+.mobile-filter-btn{
+    display: none;
+}
+
+@media screen and (max-width: 700px) {
+    .mobile-filter-btn{
+        width: 45%;
+        display: block;
+        /* flex-grow: 1; */
+    }
+    .filter-offcanvas>.filter-side-bar{
+        display: block;
+    }
+    .filter-offcanvas>.filter-chips-container{
+        display: block;
+    }
+  }

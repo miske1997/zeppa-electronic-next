@@ -9,3 +9,15 @@
 
 .dropdown-basic-button{
 }
+
+@media screen and (max-width: 700px) {
+    .dropdown-basic-button{
+        width: 45%;
+        /* flex-grow: 1; */
+    }
+    .dropdown-basic-button  button, .dropdown-basic-button span {
+        text-align: center;
+        display: block;
+        width: 100%;
+    }
+  }

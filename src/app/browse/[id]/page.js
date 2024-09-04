@@ -9,6 +9,7 @@ import ArticleList from "@/components/ArticleList/ArticleList";
 import TablePagination from "@/components/TablePagination/TablePagination";
 import { GetCategory, GetFiltersForCategory } from "@/services/categoryService";
 import { GetAllArticlesForCategory } from "@/services/articleService";
+import MobileFIlterButton from "@/components/MobileFIlterButton/MobileFIlterButton";
 
 
 
@@ -88,6 +89,7 @@ const BrowsePage = async ({ params, searchParams }) => {
             <div className='articles-grid-controlls'>
                 <div className='controlles'>
                     {/* <Button onClick={() => setShowFilters(show => !show)}>Filters</Button> */}
+                    <MobileFIlterButton filters={filters}></MobileFIlterButton>
                     <div style={{ flexGrow: '1' }}></div>
                     <CustomToggle></CustomToggle>
                 </div>
