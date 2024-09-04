@@ -6,6 +6,7 @@ import { Navbar, Container, Offcanvas, Nav, Form, Button } from 'react-bootstrap
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import NavBar from "@/components/NavBar/NavBar";
+import Footer from "@/components/Footer/Footer";
 
 
 
@@ -22,6 +23,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <NavBar></NavBar>
         {children}
+        <Footer></Footer>
       </body>
     </html>
   );

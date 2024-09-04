@@ -23,14 +23,13 @@ const filterMap = {
 const BrowsePage = async ({ params, searchParams }) => {
 
     const showFilters = true
-    const gridDisplayType = "grid"
     // const categories = useSelector(selectCategories) OVI GLAVNI ZBOG BREAD CRUMBS
     const filters = await GetFiltersForCategory(params.id)
     let articlesList = await GetAllArticlesForCategory(params.id)
-    const articlesInCart = [] // useSelector(selectArticlesInCart)
     const category = await GetCategory(params.id)
-
+    
     const urlParams = new URLSearchParams(searchParams)
+    const gridDisplayType = urlParams.get("display") ?? "grid"
     const sortType = urlParams.get("sort") !== null ? urlParams.get("sort") : "Popularity"
     const currentPage = urlParams.get("page") !== null ? parseInt(urlParams.get("page")) : 1
     const pageSize = 16
@@ -44,7 +43,7 @@ const BrowsePage = async ({ params, searchParams }) => {
 
     filterToApplay.forEach(filter => {
         articlesList = articlesList.filter(article => {
-            if (filter.name === "page" || filter.name === "sort")
+            if (filter.name === "page" || filter.name === "sort" || filter.name === "display")
                 return true
             if (!Object.hasOwn(article, filter.name))
                 return false
@@ -84,7 +83,7 @@ const BrowsePage = async ({ params, searchParams }) => {
                     <p style={{margin: "0"}}>Sortiranje prema:</p>
                     <CustomToggle></CustomToggle>
                 </Stack> */}
-                <GridStyleSelect displayType={gridDisplayType} ></GridStyleSelect>
+                <GridStyleSelect></GridStyleSelect>
             </div>
             <div className='articles-grid-controlls'>
                 <div className='controlles'>
@@ -101,9 +100,9 @@ const BrowsePage = async ({ params, searchParams }) => {
                 <div style={{ width: "100%" }}>
                     <FilterChips></FilterChips>
                     {gridDisplayType === "grid" ?
-                        <ArticleGrid categoryId={params.id} articlesInCart={articlesInCart} articleList={articlesList.slice((currentPage - 1) * pageSize, Math.min(articlesList.length, (currentPage - 1) * pageSize + pageSize))}></ArticleGrid>
+                        <ArticleGrid categoryId={params.id} articleList={articlesList.slice((currentPage - 1) * pageSize, Math.min(articlesList.length, (currentPage - 1) * pageSize + pageSize))}></ArticleGrid>
                         :
-                        <ArticleList articlesInCart={articlesInCart} onArticleClick={OnArticleClick} articleList={articlesList.slice((currentPage - 1) * pageSize, Math.min(articlesList.length, (currentPage - 1) * pageSize + pageSize))}></ArticleList>
+                        <ArticleList categoryId={params.id} articleList={articlesList.slice((currentPage - 1) * pageSize, Math.min(articlesList.length, (currentPage - 1) * pageSize + pageSize))}></ArticleList>
                     }
                 </div>
             </div>

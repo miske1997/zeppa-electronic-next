@@ -1,12 +1,12 @@
 "use client"
 import ArticleListItem from "../ArticleListItem/ArticleListItem";
 import "./ArticleList.css"
-function ArticleList({articlesInCart = [], onArticleClick = () => {}, articleList = []}) {
+function ArticleList({categoryId, articleList = []}) {
 
     function RenderListItems(){
         return articleList.map(article => {
             return (
-                <ArticleListItem onClick={onArticleClick} article={article}></ArticleListItem>
+                <ArticleListItem categoryId={categoryId} article={article}></ArticleListItem>
             )
         })
     }
