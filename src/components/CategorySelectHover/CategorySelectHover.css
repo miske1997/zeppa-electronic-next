@@ -32,3 +32,8 @@
     transform: translateX(100%);
 }
 
+@media screen and (max-width: 700px) {
+    .category-select-hover{
+        display: none;
+    }
+}
