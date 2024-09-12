@@ -13,13 +13,15 @@ import "./NavBar.css"
 import Link from 'next/link';
 import SideCart from '../SideCart/SideCart';
 import { useState } from 'react';
+import LoginModal from '../LoginModal/LoginModal';
 
 function NavBar() {
 
     const [showSideCart, setShowSideCart] = useState(false)
+    const [showLogin, setShowLogin] = useState(false)
 
     const handleHide = () => setShowSideCart(false);
-
+    const handleCloseLogin = () => setShowLogin(false);
     return (
         <>
             <Navbar sticky='top' expand="md" bg='dark' data-bs-theme="dark" className="bg-body-tertiary navbar-main ">
@@ -62,7 +64,7 @@ function NavBar() {
                                     />
                                 </Form>
                                 <Button className="me-2" variant='outline-primary'>Sing In</Button>
-                                <Button className="me-2">Log In</Button>
+                                <Button className="me-2" onClick={() => setShowLogin(true)}>Log In</Button>
                                 <Nav.Link onClick={() => setShowSideCart(true)}>
                                     <FontAwesomeIcon icon={faShoppingCart} />
                                 </Nav.Link>
@@ -72,6 +74,7 @@ function NavBar() {
 
                 </Container>
             </Navbar>
+            <LoginModal onClose={handleCloseLogin} show={showLogin}></LoginModal>
             <SideCart show={showSideCart} handleClose={handleHide}></SideCart>
         </>
     );
