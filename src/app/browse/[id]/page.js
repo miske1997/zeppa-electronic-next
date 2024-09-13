@@ -79,23 +79,14 @@ const BrowsePage = async ({ params, searchParams }) => {
                 <div className='category-name'>
                     {category.name}
                 </div>
+                <MobileFIlterButton filters={filters}></MobileFIlterButton>
                 <div style={{ flexGrow: '1' }}></div>
                 {/* <Stack style={{alignItems: "center"}} gap={1}  direction='horizontal'>
                     <p style={{margin: "0"}}>Sortiranje prema:</p>
                     <CustomToggle></CustomToggle>
                 </Stack> */}
                 <GridStyleSelect></GridStyleSelect>
-            </div>
-            <div className='articles-grid-controlls'>
-                <div className='controlles'>
-                    {/* <Button onClick={() => setShowFilters(show => !show)}>Filters</Button> */}
-                    <MobileFIlterButton filters={filters}></MobileFIlterButton>
-                    <div style={{ flexGrow: '1' }}></div>
-                    <CustomToggle></CustomToggle>
-                </div>
-                {showFilters === true ? (<div className='filters-con'>
-                    {RenderFilters()}
-                </div>) : ""}
+                <CustomToggle></CustomToggle>
             </div>
             <div className='grid-container'>
                 <FilterSideBar filters={filters}></FilterSideBar>

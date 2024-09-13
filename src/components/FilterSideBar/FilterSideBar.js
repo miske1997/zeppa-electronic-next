@@ -7,14 +7,10 @@ import { useRouter } from 'next/navigation'
 
 function FilterSideBar({ filters = [] }) {
 
-    // const navigate = useNavigate();
-    // const dispatch = useDispatch()
     const searchParams = useSearchParams();
     const pathname = usePathname();
     const router = useRouter();
     const [checkedFilters, setCheckedFilters] = useState([])
-    // const url = new URL(window.location);
-    // const filterCurrent = url.searchParams
 
     useEffect(() => {
         const params = new URLSearchParams(searchParams);
@@ -34,6 +30,7 @@ function FilterSideBar({ filters = [] }) {
         else{
             filter = filter + "_" + option
         }
+        params.delete("page")
         params.set(paramName, filter);
         router.replace(`${pathname}?${params.toString()}`);
     }
@@ -50,6 +47,7 @@ function FilterSideBar({ filters = [] }) {
             options.splice(options.findIndex(o => o === option), 1)
             params.set(paramName, options.join("_"))
         }
+        params.delete("page")
         router.replace(`${pathname}?${params.toString()}`);
     }
 

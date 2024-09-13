@@ -1,6 +1,6 @@
 .filter-side-bar:has(.accordion-item){
     width: 20rem;
-    height: 30rem;
+    height: fit-content;
     text-align: start;
 }
 
