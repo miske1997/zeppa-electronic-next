@@ -25,17 +25,67 @@ function NavBar() {
     return (
         <>
             <Navbar sticky='top' expand="md" bg='dark' data-bs-theme="dark" className="bg-body-tertiary navbar-main ">
-                <Container fluid>
+                <Container fluid className='items-center'>
                     <Navbar.Brand style={{ fontSize: "inherit" }} href="/">ZeppaElectronika</Navbar.Brand>
+                    <div className='grow'></div>
+
+                    <Form className="nav-search-form">
+                        <Form.Control
+                            type="search"
+                            placeholder="Search"
+                            className="me-2"
+                            aria-label="Search"
+                        />
+                    </Form>
+                    <Nav className='small-cart-btn'>
+                        <Nav.Link className='text-lg mx-3' onClick={() => setShowSideCart(true)}>
+                            <FontAwesomeIcon size='large' icon={faShoppingCart} />
+                        </Nav.Link>
+                    </Nav>
+                    <Nav className="nav-links justify-content-end flex-grow-1 pe-3">
+                        <Link className='nav-link' href="/admin" passHref>
+                            Admin
+                        </Link>
+                        <Link className='nav-link' href="/home" passHref>
+                            Naslovna
+                        </Link>
+                        <NavDropdown
+                            title="Proizvodi"
+                            id={`offcanvasNavbarDropdown-expand-md`}
+                        >
+                            {/* <CategorySelect onCategoryClick={OnCategoryClick} activeCategory={categoryId} categories={categories}></CategorySelect> */}
+                            {/* {RenderProducts()} */}
+                        </NavDropdown>
+                        <Link className='nav-link' href="/about" passHref>O Nama</Link>
+                        <Link className='nav-link' href="/contact" passHref>Kontakt</Link>
+                        <Form className="d-flex">
+                            <Form.Control
+                                type="search"
+                                placeholder="Search"
+                                className="me-2"
+                                aria-label="Search"
+                            />
+                        </Form>
+                        <Button className="me-2" variant='outline-primary'>Sing In</Button>
+                        <Button className="me-2" onClick={() => setShowLogin(true)}>Log In</Button>
+                        <Nav.Link onClick={() => setShowSideCart(true)}>
+                            <FontAwesomeIcon icon={faShoppingCart} />
+                        </Nav.Link>
+                    </Nav>
+
                     <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-md`} />
                     <Navbar.Offcanvas
                         id={`offcanvasNavbar-expand-md`}
                         aria-labelledby={`offcanvasNavbarLabel-expand-md`}
                         placement="end"
+                        className="nav-offcanvas"
                     >
                         <Offcanvas.Header closeButton>
-                            <Offcanvas.Title id={`offcanvasNavbarLabel-expand-md`}>
+                            <Offcanvas.Title className='flex flex-nowrap w-5/6' id={`offcanvasNavbarLabel-expand-md`}>
                                 Offcanvas
+                                <div className='grow'></div>
+                                <Button className="me-2" variant='outline-primary'>Sing In</Button>
+                                <Button className="me-2" onClick={() => setShowLogin(true)}>Log In</Button>
                             </Offcanvas.Title>
                         </Offcanvas.Header>
                         <Offcanvas.Body>
@@ -55,19 +105,6 @@ function NavBar() {
                                 </NavDropdown>
                                 <Link className='nav-link' href="/about" passHref>O Nama</Link>
                                 <Link className='nav-link' href="/contact" passHref>Kontakt</Link>
-                                <Form className="d-flex">
-                                    <Form.Control
-                                        type="search"
-                                        placeholder="Search"
-                                        className="me-2"
-                                        aria-label="Search"
-                                    />
-                                </Form>
-                                <Button className="me-2" variant='outline-primary'>Sing In</Button>
-                                <Button className="me-2" onClick={() => setShowLogin(true)}>Log In</Button>
-                                <Nav.Link onClick={() => setShowSideCart(true)}>
-                                    <FontAwesomeIcon icon={faShoppingCart} />
-                                </Nav.Link>
                             </Nav>
                         </Offcanvas.Body>
                     </Navbar.Offcanvas>
