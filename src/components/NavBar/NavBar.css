@@ -1,0 +1,10 @@
+.navbar-main{
+    
+}
+
+@media (max-width: 1000px){
+    
+    .navbar-main{
+        font-size: 10px;
+    }
+}

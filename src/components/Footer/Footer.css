@@ -39,3 +39,9 @@
 .footer .info a{
     color: white;
 }
+@media (max-width: 768px){
+    
+    .footer{
+        font-size: 6px;
+    }
+}
