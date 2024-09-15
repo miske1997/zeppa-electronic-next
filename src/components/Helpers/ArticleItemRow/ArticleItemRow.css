@@ -1,5 +1,8 @@
 .article-row{
     position: relative;
+    max-height: 6rem;
+    min-height: 0;
+    margin: 0;
 }
 
 .article-row td{
@@ -10,4 +13,8 @@
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
+}
+
+.article-row img{
+    height: 7rem;
 }

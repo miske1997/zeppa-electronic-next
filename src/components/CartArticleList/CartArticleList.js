@@ -48,25 +48,20 @@ function CartArticleList() {
     }
     return (
         <>
-            <Table >
+            <Table className="m-0">
                 <thead>
                     <tr style={{ verticalAlign: "middle" }}>
-                        <th></th>
+                        <th>Produkt</th>
                         <th>Ime</th>
                         <th>Kolicina</th>
-                        <th>Ukupna Cena</th>
+                        <th>Cena</th>
                     </tr>
                 </thead>
                 <tbody>
-
                     {RenderRow()}
-
                 </tbody>
             </Table>
-            {/* <ListGroup className="gap-2  ">
-                        {RenderArticles()}
-                    </ListGroup> */}
-            <div className="cost-sum-con">
+            <div className="cost-sum-con text-xl">
                 <p>Cena:</p>
                 <p className="cost-sum">{`${CalculatePriceSum()} RSD`}</p>
             </div>

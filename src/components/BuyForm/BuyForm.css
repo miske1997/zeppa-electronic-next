@@ -1,0 +1,26 @@
+.buy-form-con{
+    background-color: rgb(var(--bs-dark-rgb))!important;
+    border-radius: 10px;
+    color: white;
+}
+
+.buy-form-con input{
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #f8f8f8;
+    border-radius: 0;
+    color: white;
+}
+
+.buy-form-con input:focus{
+    border-radius: 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #f8f8f8;
+    color: white;
+}
+
+.buy-form-con .order-buton{
+    width: 70%;
+    border-radius: 20px;
+}
