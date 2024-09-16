@@ -4,7 +4,7 @@ import { faShoppingCart, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import './ArticlePage.css'
 import PopularCard from "@/components/PopularCard/PopularCard";
 import Carousel from "@/components/Carousel/Carousel";
-import { GetArticleById } from "@/services/articleService";
+import { GetArticleById, GetArticleassosiations } from "@/services/articleService";
 import Image from 'next/image';
 import ArticleTabs from '@/components/ArticleTabs/ArticleTabs';
 import ArticleModifier from '@/components/ArticleModifier/ArticleModifier';
@@ -16,7 +16,7 @@ async function ArticlePage({ params }) {
     // const [modifiers, setModifiers] = useState({})
     let categoryId = params.categoryId //useParams();
     const article = await GetArticleById(categoryId, params.id)//useSelector(selectArticle)
-    console.log(article);
+    const relatedArticles = await GetArticleassosiations(categoryId, params.id)
     const cart = [] //useSelector(selectArticlesInCart)
 
 
@@ -59,7 +59,11 @@ async function ArticlePage({ params }) {
             return(<ArticleModifier modifier={modifier}></ArticleModifier>)
         })
     }
-
+    function RenderRelatedArticles(){
+        return relatedArticles.map(relatedArticle => {
+            return (<PopularCard article={relatedArticle}></PopularCard>)
+        })
+    }
     function renderAddToCartButton() {
         // if (!cart || !article)
         //     return;
@@ -124,17 +128,7 @@ async function ArticlePage({ params }) {
                 <div className="row justify-content-center">
                     <div className="col">
                         <Carousel>
-                            <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
-                            <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
-                            <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
-                            <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
-                            <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
-                            <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
-                            <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
-                            <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
-                            <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
-                            <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
-                            <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
+                            {RenderRelatedArticles()}
                         </Carousel>
                     </div>
                 </div>

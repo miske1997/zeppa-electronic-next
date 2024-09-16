@@ -1,5 +1,5 @@
 import db from "@/configs/firebase";
-import {  addDoc, collection, deleteDoc, doc, getDoc, getDocs, increment, setDoc, updateDoc } from "firebase/firestore";
+import {  addDoc, collection, deleteDoc, doc, getDoc, getDocs, increment, limit, orderBy, query, setDoc, updateDoc } from "firebase/firestore";
 
 
     
@@ -40,7 +40,57 @@ export async function IncrementArticleSalesOfCart(articlesInCart){
         const ref = doc(db, "category", article.categoryId, "articles", article.id);
     
         await updateDoc(ref, {
-            numberOfSales: increment(1)
+            buys: increment(1)
         });
     }
+}
+
+export async function AddArticleAssosiations(articlesInCart){
+    for (const article of articlesInCart) {
+        console.log(article.id);
+        articlesInCart.forEach(cartArticle => {
+            if (article.id != cartArticle.id){
+                AddArticleAssosiation(article, cartArticle)
+            }
+        });
+    }
+}
+
+
+export async function AddArticleAssosiation(article, assosiatedArticle){
+    const articleRef = doc(db ,"articleAssociations", article.id)
+    await setDoc(articleRef, {name: article.name})
+    const assosiationRef = doc(db, "articleAssociations", article.id, "assosiations", assosiatedArticle.id)
+    updateDoc(assosiationRef, {
+        buys: increment(1)
+    }).catch(err => {
+        if (err.code === "not-found"){
+            setDoc(assosiationRef, {buys: 1, categoryId: assosiatedArticle.categoryId})
+        }
+    })
+}
+
+export async function GetPopularArticlesInCategory(categoryId, count){
+    const articlesRef = collection(db, "category", categoryId, "articles")
+    const queryResult = query(articlesRef, orderBy("buys", "desc"), limit(count))
+    const querySnapshot = await getDocs(queryResult)
+    let data = []
+    querySnapshot.forEach(doc => data.push({...doc.data(), id: doc.id}))
+    return data
+}
+
+export async function GetArticleassosiations(categoryId ,articleId){
+    const assosiationRef = collection(db, "articleAssociations", articleId, "assosiations")
+
+    const queryResult = query(assosiationRef, orderBy("buys", "desc"), limit(10))
+    const querySnapshot = await getDocs(queryResult)
+    let data = []
+    for (const snapShot of querySnapshot.docs) {
+        data.push(await GetArticleById(snapShot.data().categoryId, snapShot.id))
+    }
+    if (data.length < 10){
+        data = data.concat(await GetPopularArticlesInCategory(categoryId, 10 - data.length))
+    }
+    //TODO REMOVE DUPLICATES
+    return data
 }
