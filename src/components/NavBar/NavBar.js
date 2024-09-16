@@ -14,8 +14,9 @@ import Link from 'next/link';
 import SideCart from '../SideCart/SideCart';
 import { useState } from 'react';
 import LoginModal from '../LoginModal/LoginModal';
+import CategorySelect from '../CategorySelect/CategorySelect';
 
-function NavBar() {
+function NavBar({categories = []}) {
 
     const [showSideCart, setShowSideCart] = useState(false)
     const [showLogin, setShowLogin] = useState(false)
@@ -50,8 +51,7 @@ function NavBar() {
                             title="Proizvodi"
                             id={`offcanvasNavbarDropdown-expand-md`}
                         >
-                            {/* <CategorySelect onCategoryClick={OnCategoryClick} activeCategory={categoryId} categories={categories}></CategorySelect> */}
-                            {/* {RenderProducts()} */}
+                            <CategorySelect categories={categories}></CategorySelect>
                         </NavDropdown>
                         <Link className='nav-link' href="/about" passHref>O Nama</Link>
                         <Link className='nav-link' href="/contact" passHref>Kontakt</Link>
