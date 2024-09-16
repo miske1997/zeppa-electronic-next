@@ -43,9 +43,6 @@ function NavBar() {
                         </Nav.Link>
                     </Nav>
                     <Nav className="nav-links justify-content-end flex-grow-1 pe-3">
-                        <Link className='nav-link' href="/admin" passHref>
-                            Admin
-                        </Link>
                         <Link className='nav-link' href="/home" passHref>
                             Naslovna
                         </Link>
@@ -90,9 +87,6 @@ function NavBar() {
                         </Offcanvas.Header>
                         <Offcanvas.Body>
                             <Nav className="justify-content-end flex-grow-1 pe-3">
-                                <Link className='nav-link' href="/admin" passHref>
-                                    Admin
-                                </Link>
                                 <Link className='nav-link' href="/home" passHref>
                                     Naslovna
                                 </Link>

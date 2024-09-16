@@ -11,7 +11,7 @@ function Footer() {
 
                 <div>
                     <h4>Pomoc</h4>
-                    <Link href="/help">Uputstvo za kupovinu</Link>
+                    <Link href="/instructions">Uputstvo za kupovinu</Link>
                     <p>Način isporuke</p>
                     <p>Način plaćanja</p>
                     <p>Garancija kvaliteta</p>
