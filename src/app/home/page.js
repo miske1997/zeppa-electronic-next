@@ -7,6 +7,7 @@ import CategorySelectHover from "@/components/CategorySelectHover/CategorySelect
 import { GetMainCategorys } from "@/services/categoryService"
 
 import "./HomePage.css"
+import MobileHomeCarousel from "@/components/MobileHomeCarousel/MobileHomeCarousel";
 
 export default async function HomePage() {
     const categories = await GetMainCategorys();
@@ -24,7 +25,7 @@ export default async function HomePage() {
 
     return (
         <main style={{ position: "relative" }}>
-
+            <MobileHomeCarousel></MobileHomeCarousel>
             <ScrollingImage firstParagraphFirstRow='' secondParagraph='' picPositionPixels={-20} backgroundImageSource='https://www.nextpcb.com/uploads/images/202303/20/1679303211-0734-cavktR.jpg'>
                 <div className='category-container'>
                     <CategorySelectHover categories={categories}></CategorySelectHover>

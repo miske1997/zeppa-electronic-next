@@ -53,3 +53,9 @@
 .popular-item{
     height: 90% !important;
 }
+
+@media screen and (max-width: 700px) {
+    .hero-title, .hero-text{
+        display: none;
+    }
+}
