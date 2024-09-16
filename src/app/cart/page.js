@@ -3,7 +3,7 @@ import { Container, ListGroup, Row, Col, Table } from "react-bootstrap";
 import "./CartPage.css"
 import ArticleItemRow from "../../components/Helpers/ArticleItemRow/ArticleItemRow";
 import BuyForm from "@/components/BuyForm/BuyForm";
-import { IncrementArticleSalesOfCart, OrderArticles } from "@/services/articleService";
+import { AddArticleAssosiations, IncrementArticleSalesOfCart, OrderArticles } from "@/services/articleService";
 import { IncrementCategorySalesForCart } from "@/services/categoryService";
 import { Timestamp } from "@firebase/firestore";
 import CartArticleList from "@/components/CartArticleList/CartArticleList";
@@ -15,7 +15,7 @@ function CartPage() {
         OrderArticles(articlesInCart, { ...orderData, orderTime: Timestamp.fromDate(new Date()) })
         IncrementCategorySalesForCart(articlesInCart)
         IncrementArticleSalesOfCart(articlesInCart)
-    
+        AddArticleAssosiations(articlesInCart)
     }
     
     function RenderArticles() {

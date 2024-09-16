@@ -24,9 +24,8 @@ function BuyForm({ PlaceOrder }) {
             const phone = form[4].value
             const city = form[5].value
             const state = form[6].value
-            const zip = form[7].value
-            const saveDetails = form[8].value
-            PlaceOrder(JSON.parse(localStorage.getItem('cartItems')), { name, lastName, email, address, city, state, zip, saveDetails })
+            const saveDetails = form[7].value
+            PlaceOrder(JSON.parse(localStorage.getItem('cartItems')), { name, lastName, email, address, city, state, saveDetails })
         }
 
         setValidated(true);
