@@ -50,17 +50,18 @@
 
 .in-cart-icon{
     position: absolute;
-    right: -1rem;
+    right: -0.8rem;
     top: 0.5rem;
-    background-color: rgba(255, 0, 0, 0.359);
+    background-color: rgb(var(--bs-dark-rgb));
     display: flex;
     justify-content: center;
     align-items: center;
+    clip-path: polygon(0 0, 100% 0, 80% 50%, 100% 100%, 0 100%);
 }
 
 .in-cart-icon .icon{
     padding-block: 0.3rem;
-    padding-left: 1rem;
-    padding-right: 0.2rem;
-    color: rgb(40, 40, 40);
+    padding-left: 0.3rem;
+    padding-right: 1rem;
+    color: rgb(255, 255, 255);
 }

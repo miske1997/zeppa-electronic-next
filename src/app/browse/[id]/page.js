@@ -76,16 +76,15 @@ const BrowsePage = async ({ params, searchParams }) => {
                 <Breadcrumb.Item>{category.name}</Breadcrumb.Item>
             </Breadcrumb> */}
             <div className='name-container'>
-                <div className='category-name'>
+                <p className='category-name'>
                     {category.name}
-                </div>
-                <MobileFIlterButton filters={filters}></MobileFIlterButton>
+                </p>
                 <div style={{ flexGrow: '1' }}></div>
-                {/* <Stack style={{alignItems: "center"}} gap={1}  direction='horizontal'>
-                    <p style={{margin: "0"}}>Sortiranje prema:</p>
-                    <CustomToggle></CustomToggle>
-                </Stack> */}
                 <GridStyleSelect></GridStyleSelect>
+                <CustomToggle></CustomToggle>
+            </div>
+            <div className="mobile-buttons">
+                <MobileFIlterButton filters={filters}></MobileFIlterButton>
                 <CustomToggle></CustomToggle>
             </div>
             <div className='grid-container'>

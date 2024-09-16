@@ -15,8 +15,12 @@ function MobileFIlterButton({filters}) {
 
     return ( 
         <>
-            <Button onClick={() => setShow(true)} variant="dark" className="mobile-filter-btn">Filteri
-                <FontAwesomeIcon className="p-1" icon={faFilter}></FontAwesomeIcon>
+            <Button onClick={() => setShow(true)} variant="dark" className="mobile-filter-btn">
+                <span className="flex justify-center gap-1">
+                    Filteri
+                    <FontAwesomeIcon className="p-1" icon={faFilter}></FontAwesomeIcon>    
+                </span>
+                
             </Button>
             <Offcanvas className="side-filters" placement={"start"} show={show} onHide={handleClose}>
             <Offcanvas.Header closeButton>

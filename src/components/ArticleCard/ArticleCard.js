@@ -45,7 +45,7 @@ function ArticleCard({ categoryId = "", article = { id: 0, name: '', cost: 0 }, 
             cartItems.splice(items.findIndex(i => i.id === article.id), 1)
         }
         else {
-            cartItems.push(article)
+            cartItems.push({...article, categoryId: categoryId})
         }
 
         setItems([...cartItems])
