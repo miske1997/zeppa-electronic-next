@@ -18,3 +18,9 @@
 .article-row img{
     height: 7rem;
 }
+
+.article-row svg{
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}

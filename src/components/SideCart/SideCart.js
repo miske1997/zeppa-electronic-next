@@ -58,16 +58,16 @@ function SideCart({ show = false, handleClose = () => { } }) {
 
         <Offcanvas className="side-cart" placement={"end"} show={show} onHide={handleClose}>
             <Offcanvas.Header closeButton>
-                <Offcanvas.Title className="fs-2">Cart</Offcanvas.Title>
+                <Offcanvas.Title className="fs-2">Korpa</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
                 <Table >
                     <thead>
                         <tr>
-                            <th></th>
+                            <th>Produkt</th>
                             <th>Ime</th>
                             <th>Kolicina</th>
-                            <th>Ukupna Cena</th>
+                            <th>Cena</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -1,3 +1,12 @@
 .side-cart{
     width: 40rem !important;
 }
+
+@media screen and (max-width: 580px) {
+    .side-cart td>img{
+        height: auto;
+    }
+    .side-cart td>div, .side-cart td{
+        font-size: small;
+    }
+}
