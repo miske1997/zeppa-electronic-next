@@ -15,7 +15,8 @@ function FilterChips() {
         const params = new URLSearchParams(searchParams);
         const parsedFilters = []
         for (const param of params.entries()) {
-            parsedFilters.push({name : param[0], options: param[1].split("_") })
+            if (param[0] !== "display" && param[0] !== "sort" && param[0] !== "page")
+                parsedFilters.push({name : param[0], options: param[1].split("_") })
         }
         setCheckedFilters(parsedFilters)
     }, [searchParams]);
