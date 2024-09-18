@@ -4,6 +4,7 @@
     overflow-y: visible;
     overflow-x: visible;
     overflow: visible;
+    box-shadow: 32px 10px 15px -3px rgba(0, 0, 0, 0.3);
 }
 
 .category-main-name{

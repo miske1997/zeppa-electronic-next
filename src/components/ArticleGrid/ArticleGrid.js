@@ -20,7 +20,7 @@ async function ArticleGrid({ articlesInCart = [], categoryId, articleList }) {
     function RenderRow(articleSubList) {
         return articleSubList.map(article => {
             return (
-                <Col key={article.id} xs={{ span: 10 }} sm={{ span: 10 }} lg={{ span: 5 }} xl={{ span: 3 }}>
+                <Col key={article.id} xs={{ span: 12 }} sm={{ span: 10 }} lg={{ span: 5 }} xl={{ span: 3 }}>
                     <ArticleCard categoryId={categoryId} articleInCart={IsArticleInCart(article)} article={article} imageSrc={article.imageSrc} ></ArticleCard>
                 </Col>
             )
@@ -34,10 +34,10 @@ async function ArticleGrid({ articlesInCart = [], categoryId, articleList }) {
         const rows = []
         while (listClone.length > 0) {
             if (listClone.length < itemsInRow) {
-                rows.push((<Row className="top-buffer justify-content-center" > {RenderRow(listClone.splice(0, listClone.length))} </Row>))
+                rows.push((<Row className="article-row top-buffer justify-content-center" > {RenderRow(listClone.splice(0, listClone.length))} </Row>))
             }
             else {
-                rows.push((<Row className="top-buffer justify-content-center" > {RenderRow(listClone.splice(0, itemsInRow))} </Row>))
+                rows.push((<Row className="article-row top-buffer justify-content-center" > {RenderRow(listClone.splice(0, itemsInRow))} </Row>))
             }
         }
         return rows

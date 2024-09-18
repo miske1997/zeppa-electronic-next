@@ -45,7 +45,7 @@
     position: absolute;
     right: -1rem;
     top: 0.5rem;
-    background-color: rgba(255, 0, 0, 0.359);
+    background-color:  rgb(var(--bs-dark-rgb));
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,5 +55,5 @@
     padding-block: 0.3rem;
     padding-left: 1rem;
     padding-right: 0.2rem;
-    color: rgb(40, 40, 40);
+    color: white;
 }

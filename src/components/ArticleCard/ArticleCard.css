@@ -3,8 +3,11 @@
     transition: box-shadow 0.3s ease-out;
     text-align: left;
     position: relative;
+    height: fit-content;
+    min-height: 100%;
+    max-height: 100%;
     border-radius: 12px !important;
-    
+    container-type: inline-size;
     transition: transform 0.2s ease;
 }
 .article-card:hover{
@@ -24,7 +27,9 @@
     align-items: center;
     justify-content: center;
 }
-
+.article-card .card-img-top{
+    min-height: 65cqw;
+}
 .card-info>div{
     background-color: rgba(128, 128, 128, 0.168);
     padding-inline: 0.3rem;
@@ -48,6 +53,7 @@
     color: rgb(186, 186, 132);
 }
 
+
 .in-cart-icon{
     position: absolute;
     right: -0.8rem;
@@ -65,3 +71,9 @@
     padding-right: 1rem;
     color: rgb(255, 255, 255);
 }
+
+/* @media screen and (max-width: 1000px){
+    .article-card .card-img-top{
+        min-height: 30cqi;
+    }
+} */

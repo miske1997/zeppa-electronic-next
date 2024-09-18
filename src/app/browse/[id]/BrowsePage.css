@@ -88,6 +88,9 @@
     .name-container .category-name{
         font-size: medium;
     }
+    .grid-container {
+        width: 90%;
+    }
 }
 @media (max-width: 576px) {
 

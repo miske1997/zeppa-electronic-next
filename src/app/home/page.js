@@ -34,8 +34,8 @@ export default async function HomePage() {
                 <p className='hero-text'>Sed vel vestibulum dui, in pulvinar elit. Aenean vulputate ante orci, quis maximus diam vehicula malesuada. Ut a turpis efficitur, malesuada nibh a, elementum dolor.</p>
             </ScrollingImage>
 
-            <div>
-                <h1 style={{ marginBlock: "3rem" }}>Popularne Kategorije</h1>
+            <div className="text-center text-2xl">
+                <h1 style={{ marginBlock: "3rem", marginInline: "auto" }}>Popularne Kategorije</h1>
                 {/* <Carousel>
                     <ZoomingImage onCategoryClick={OnCategoryClick} text='Merni Instrumenti' src='https://elektroleum.rs/wp-content/uploads/2024/01/universal-multimeter-voltcraft-vc-440-e-2-e1704546584200.webp'></ZoomingImage>
                     <ZoomingImage onCategoryClick={OnCategoryClick} text='Alati i Pribor' src='https://elektroleum.rs/wp-content/uploads/2021/11/ERSA-e1704546708198.jpg'></ZoomingImage>
@@ -46,7 +46,7 @@ export default async function HomePage() {
                 <ExpandingGalery></ExpandingGalery>
             </div>
             
-            <div style={{ display: "flex", alignItems: "center", flexDirection: "column", width: "100%", justifyContent: "center" }}>
+            <div className="text-2xl" style={{ display: "flex", alignItems: "center", flexDirection: "column", width: "100%", justifyContent: "center" }}>
                 <h1 style={{ marginBlock: "3rem" }}>Popular Articles</h1>
                 <Carousel>
                     <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
@@ -64,7 +64,7 @@ export default async function HomePage() {
 
             </div>
             
-            <div>
+            <div className="text-center text-2xl">
                 <h1 style={{ marginBlock: "3rem" }}>Brendovi</h1>
             </div>
         </main>
