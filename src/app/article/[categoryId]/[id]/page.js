@@ -88,7 +88,7 @@ async function ArticlePage({ params }) {
                 </div>
                 <div className="row article-top justify-content-center">
                     <div className="col article-image-con col-md-6 col-sm-10 col-10">
-                        <img src={article.imageUrl ?? "/chip.jpg"} alt="/chip.jpg" rounded></img>
+                        <img src={article.imageUrl === "" ? "/chip.jpg" : ""} alt="/chip.jpg" rounded></img>
                     </div>
                     <div className="col article-description col-md-4 col-10 article-description">
                         <h2 className="fs-1">
