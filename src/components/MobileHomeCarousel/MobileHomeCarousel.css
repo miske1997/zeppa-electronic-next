@@ -5,11 +5,21 @@
     left: 50%;
     transform: translateX(-50%);
     display: none;
+    color: black;
 }
 
 .mobile-carousel .carousel{
     width: 100%;
     height: 100%;
+}
+.mobile-carousel>img{
+    width: 100%;
+    height: 100%;
+}
+
+.mobile-carousel p, .mobile-carousel h3{
+    color: black;
+    font-weight: 500;
 }
 
 @media screen and (max-width: 700px) {
