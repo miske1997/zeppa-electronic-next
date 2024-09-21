@@ -2,16 +2,18 @@ import { getAuth } from "@firebase/auth";
 import { getApp, getApps, initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
+import { getAnalytics } from "firebase/analytics";
 
 // TODO: Replace the following with your app's Firebase project configuration
 // See: https://support.google.com/firebase/answer/7015592
 const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-    authDomain: "anikapanika-357d1.firebaseapp.com",
-    projectId: "anikapanika-357d1",
-    storageBucket: "anikapanika-357d1.appspot.com",
-    messagingSenderId: "41216863064",
-    appId: "1:41216863064:web:91b24f512df6535922132d"
+    authDomain: process.env.AUTH_DOMAIN,
+    projectId: process.env.PROJECT_ID,
+    storageBucket: process.env.STORAGE_BUCKET,
+    messagingSenderId: process.env.MESSAGING_SENDER_ID,
+    appId: process.env.APP_ID,
+    measurementId: process.env.MESUREMENT_ID
   };
 
 // Initialize Firebase
