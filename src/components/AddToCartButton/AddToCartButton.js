@@ -1,11 +1,12 @@
 "use client"
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "react-bootstrap";
 
 function AddToCartButton({ articleData }) {
 
     const [items, setItems] = useState(null);
     const [inCart, setInCart] = useState(false)
+    const buttonRef = useRef()
 
     useEffect(() => {
         const cartItems = JSON.parse(localStorage.getItem('cartItems'));
@@ -28,21 +29,67 @@ function AddToCartButton({ articleData }) {
         localStorage.setItem('cartItems', JSON.stringify(items));
     }, [items]);
 
+    useEffect(() => {
+        const handler = document.querySelector(".kolicina-input").addEventListener("change", (ev) => {
+                if (ev.target.value == ""){
+                    ev.target.value = 1
+                }
+                UpdateItemInCart(ev.target.value)
+        })
+        return () => {document.querySelector(".kolicina-input")?.removeEventListener("change", handler)}
+
+    }, []);
+
+    function UpdateItemInCart(newAmount) {
+        const cartItems = JSON.parse(localStorage.getItem('cartItems'));
+        if (!cartItems)
+            return;
+        let item = null
+        for (const cartItem of cartItems) {
+            if (cartItem.id == articleData.id){
+                item = cartItem
+                break
+            }
+        }
+        if (!item){
+            return
+        }
+        item.amount = newAmount
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }
 
     function AddArticleToCart(){
         if (items.find(item => item.id === articleData.id)){
             items.splice(items.findIndex(i => i.id === articleData.id), 1)
         }
         else{
-            items.push(articleData)
+            items.push({cost: articleData.cost, name: articleData.name, id: articleData.id, imageUrl: articleData.imageUrl, modifiers: getModifiers(), amount: GetKolicina()})
         }
         console.log(items);
-        
         setItems([...items])
     }
 
+    function getModifiers() {
+        let modifierArray = []
+        for (const key in articleData) {
+            if (Object.hasOwnProperty.call(articleData, key) && Array.isArray(articleData[key])) {
+                modifierArray.push({ name: key, values: articleData[key] })
+            }
+        }
+        const modifiersSelected = {}
+        let modifierSelects = document.querySelectorAll(".article-modifier") //buttonRef.current.parentElement.
+        modifierSelects.forEach(el => {
+            modifiersSelected[el.querySelector("input").value] = el.querySelector(".article-modifier-select").value
+        })
+        console.log(modifiersSelected);
+
+        return modifiersSelected
+    }
+    function GetKolicina(){
+        return document.querySelector(".kolicina-input").value ?? 1
+    }
     return (
-        <Button onClick={AddArticleToCart}>{inCart ? "Ukloni iz korpe" : "Dodaj u korpu"}</Button>
+        <Button ref={buttonRef} onClick={AddArticleToCart}>{inCart ? "Ukloni iz korpe" : "Dodaj u korpu"}</Button>
     );
 }
 

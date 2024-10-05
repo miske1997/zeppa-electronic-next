@@ -14,7 +14,7 @@ import AddToCartButton from '@/components/AddToCartButton/AddToCartButton';
 async function ArticlePage({ params }) {
     // const [amount, setAmmount] = useState(1)
     // const [modifiers, setModifiers] = useState({})
-    let categoryId = params.categoryId //useParams();
+    let categoryId = params.categoryId
     const article = await GetArticleById(categoryId, params.id)//useSelector(selectArticle)
     const relatedArticles = await GetArticleassosiations(categoryId, params.id)
     const cart = [] //useSelector(selectArticlesInCart)
@@ -56,7 +56,7 @@ async function ArticlePage({ params }) {
     }
     function renderArticleModifiers() {
         return getModifiers().map(modifier => {
-            return(<ArticleModifier modifier={modifier}></ArticleModifier>)
+            return(<ArticleModifier articleId={article.id} modifier={modifier}></ArticleModifier>)
         })
     }
     function RenderRelatedArticles(){
@@ -106,7 +106,7 @@ async function ArticlePage({ params }) {
                         </div>
                         <div className="m-1" style={{ paddingBottom: "1rem", display: "flex", gap: "1rem", alignItems: "center" }}>
                             <h3 className="m-0">{`${article.cost} RSD`}</h3>
-                            <input style={{ margin: 0, width: "5rem", textAlign: 'center' }} defaultValue={1} min={1} type="number"></input>
+                            <input className='kolicina-input' style={{ margin: 0, width: "5rem", textAlign: 'center' }} defaultValue={1} min={1} type="number"></input>
                         </div>
                         <div>
                             <AddToCartButton articleData={article}></AddToCartButton>
