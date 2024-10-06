@@ -125,7 +125,7 @@ async function ArticlePage({ params }) {
                     </div>
                 </div>
                 <div className="row mt-5 justify-content-center">
-                    <div className="col">
+                    <div className="col text-center text-2xl">
                         <h2>Preporuceni Artikli</h2>
                     </div>
                 </div>

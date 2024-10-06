@@ -30,7 +30,7 @@ export default async function HomePage() {
                 <div className='category-container'>
                     <CategorySelectHover categories={categories}></CategorySelectHover>
                 </div>
-                <h1 className='hero-title' >ZeppaElectronika</h1>
+                <h1 className='hero-title' >ZEPPA ELEKTRONIKA</h1>
                 <p className='hero-text'>Sed vel vestibulum dui, in pulvinar elit. Aenean vulputate ante orci, quis maximus diam vehicula malesuada. Ut a turpis efficitur, malesuada nibh a, elementum dolor.</p>
             </ScrollingImage>
 
@@ -45,28 +45,29 @@ export default async function HomePage() {
                 </Carousel> */}
                 <ExpandingGalery></ExpandingGalery>
             </div>
-            
+
             <div className="text-2xl" style={{ display: "flex", alignItems: "center", flexDirection: "column", width: "100%", justifyContent: "center" }}>
                 <h1 style={{ marginBlock: "3rem" }}>Popular Articles</h1>
-                <Carousel>
-                    <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
-                    <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
-                    <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
-                    <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
-                    <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
-                    <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
-                    <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
-                    <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
-                    <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
-                    <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
-                    <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
-                </Carousel>
+                <div style={{ width: "90%" }}>
+                    <Carousel>
+                        <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
+                        <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
+                        <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
+                        <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
+                        <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
+                        <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
+                        <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
+                        <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
+                        <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
+                        <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
+                        <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
+                    </Carousel>
+                </div>
+            </div>
 
-            </div>
-            
-            <div className="text-center text-2xl">
+            {/* <div className="text-center text-2xl">
                 <h1 style={{ marginBlock: "3rem" }}>Brendovi</h1>
-            </div>
+            </div> */}
         </main>
     );
 }

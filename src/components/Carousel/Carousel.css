@@ -5,6 +5,7 @@
     overflow: hidden;
     align-items: center;
     padding-block: 2rem;
+    container-type: inline-size;
 }
 
 .button-left,
@@ -37,9 +38,11 @@
     flex-direction: row;
     min-width: max-content;
     transition: 0.15s transform ease-in;
-    gap: 1rem;
+    gap: 1cqi;
 }
-
+.carousel-initialized-slides-div:first-child{
+    margin-left: 1cqi;
+}
 .carousel-slide-div {
     min-width: 30vw;
     max-width: 30vw;
