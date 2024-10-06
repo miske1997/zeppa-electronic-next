@@ -10,15 +10,16 @@ import TablePagination from "@/components/TablePagination/TablePagination";
 import { GetCategory, GetFiltersForCategory } from "@/services/categoryService";
 import { GetAllArticlesForCategory } from "@/services/articleService";
 import MobileFIlterButton from "@/components/MobileFIlterButton/MobileFIlterButton";
+import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 
 
 
 const filterMap = {
     NameAsc: (a, b) => a.name > b.name ? 1 : -1,
     NameDesc: (a, b) => a.name < b.name ? 1 : -1,
-    Popularity: (a, b) => a.buys < b.buys ? 1 : -1,
-    PriceAsc: (a, b) => a.cost > b.cost ? 1 : -1,
-    PriceDesc: (a, b) => a.cost < b.cost ? 1 : -1,
+    Popularity: (a, b) => parseInt(a.buys)  < parseInt(b.buys) ? 1 : -1,
+    PriceAsc: (a, b) => parseFloat(a.cost) > parseFloat(b.cost) ? 1 : -1,
+    PriceDesc: (a, b) => parseFloat(a.cost) < parseFloat(b.cost) ? 1 : -1,
 }
 
 const BrowsePage = async ({ params, searchParams }) => {
@@ -75,6 +76,7 @@ const BrowsePage = async ({ params, searchParams }) => {
                 <Breadcrumb.Item>{GetMainCategory()}</Breadcrumb.Item>
                 <Breadcrumb.Item>{category.name}</Breadcrumb.Item>
             </Breadcrumb> */}
+            <BreadCrumbs crumbs={[{text: "Pocetna", link: "/home"}, {text: category.name, link: `/browse/${params.id}`}]}></BreadCrumbs>
             <div className='name-container'>
                 <p className='category-name'>
                     {category.name}

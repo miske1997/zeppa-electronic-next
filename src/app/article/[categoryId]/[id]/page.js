@@ -9,6 +9,8 @@ import Image from 'next/image';
 import ArticleTabs from '@/components/ArticleTabs/ArticleTabs';
 import ArticleModifier from '@/components/ArticleModifier/ArticleModifier';
 import AddToCartButton from '@/components/AddToCartButton/AddToCartButton';
+import BreadCrumbs from '@/components/BreadCrumbs/BreadCrumbs';
+import { GetCategory } from '@/services/categoryService';
 
 
 async function ArticlePage({ params }) {
@@ -17,6 +19,7 @@ async function ArticlePage({ params }) {
     let categoryId = params.categoryId
     const article = await GetArticleById(categoryId, params.id)//useSelector(selectArticle)
     const relatedArticles = await GetArticleassosiations(categoryId, params.id)
+    const category = await GetCategory(categoryId)
     const cart = [] //useSelector(selectArticlesInCart)
 
 
@@ -84,6 +87,7 @@ async function ArticlePage({ params }) {
                             <Breadcrumb.Item>Digitalni multimeri</Breadcrumb.Item>
                             <Breadcrumb.Item>UNI-T UT622E LCR</Breadcrumb.Item>
                         </Breadcrumb> */}
+                        <BreadCrumbs crumbs={[{text: "Pocetna", link: "/home"}, {text: category.name, link: `/browse/${categoryId}`}, {text: article.name, link: `/article/${categoryId}/${article.id}`}]}></BreadCrumbs>
                     </div>
                 </div>
                 <div className="row article-top justify-content-center">
