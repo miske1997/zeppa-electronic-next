@@ -28,6 +28,7 @@ function BuyForm({ PlaceOrder }) {
             PlaceOrder(JSON.parse(localStorage.getItem('cartItems')), { name, lastName, email, address, city, state, saveDetails })
             localStorage.setItem("tosts", JSON.stringify(JSON.parse(localStorage.getItem("tosts")).push({text: "Kupovina obavljena", duration: 2000})))
             localStorage.setItem("cartItems", JSON.stringify([]))
+            
             setTimeout(() => {
                 setValidated(false);
                 form[0].value = ""
