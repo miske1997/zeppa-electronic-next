@@ -26,6 +26,20 @@ function BuyForm({ PlaceOrder }) {
             const state = form[6].value
             const saveDetails = form[7].value
             PlaceOrder(JSON.parse(localStorage.getItem('cartItems')), { name, lastName, email, address, city, state, saveDetails })
+            localStorage.setItem("tosts", JSON.stringify(JSON.parse(localStorage.getItem("tosts")).push({text: "Kupovina obavljena", duration: 2000})))
+            localStorage.setItem("cartItems", JSON.stringify([]))
+            setTimeout(() => {
+                setValidated(false);
+                form[0].value = ""
+                form[1].value = ""
+                form[2].value = ""
+                form[3].value = ""
+                form[4].value = ""
+                form[5].value = ""
+                form[6].value = "" 
+            }, 500);
+            
+
         }
 
         setValidated(true);
@@ -104,6 +118,9 @@ function BuyForm({ PlaceOrder }) {
                 <div className='flex justify-center mt-4'>
                     <Button className='order-buton m-auto' variant="primary" type="submit">
                         Order
+                    </Button>
+                    <Button className='order-buton m-auto' variant="primary" type="reset">
+                        reset
                     </Button>
 
                 </div>
