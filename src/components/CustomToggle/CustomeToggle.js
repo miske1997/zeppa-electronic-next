@@ -6,6 +6,8 @@ import { Dropdown, DropdownButton } from 'react-bootstrap';
 import './CustomToggle.css'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
+const sortMap = {Popularity: "Popularnost", NameAsc: "Ime ▲", NameDesc: "Ime ▼", PriceAsc: "Cena ▲", PriceDesc: "Cena ▼"}
+
 const CustomToggle = ({}) =>{
   
   const searchParams = useSearchParams();
@@ -21,14 +23,14 @@ const CustomToggle = ({}) =>{
   return (
     <DropdownButton variant="dark" className="dropdown-basic-button" title={
         <span>
-          {`${filterCurrent}`} <FontAwesomeIcon icon={faFilter} />
+          {`${sortMap[filterCurrent]}`} {/*<FontAwesomeIcon icon={faFilter} /> */}
         </span>
       }>
-      <Dropdown.Item  onClick={(event) => {event.preventDefault(); AddUrlParam("NameAsc")}}>By: Name Asc</Dropdown.Item>
-      <Dropdown.Item  onClick={(event) => {event.preventDefault(); AddUrlParam("NameDesc")}}>By: Name Desc</Dropdown.Item>
-      <Dropdown.Item onClick={(event) => {event.preventDefault(); AddUrlParam("Popularity")}}>By: Popularity</Dropdown.Item>
-      <Dropdown.Item  onClick={(event) => {event.preventDefault(); AddUrlParam("PriceAsc")}}>By: Price Asc</Dropdown.Item>
-      <Dropdown.Item  onClick={(event) => {event.preventDefault(); AddUrlParam("PriceDesc")}}>By: Price Desc</Dropdown.Item>
+      <Dropdown.Item  onClick={(event) => {event.preventDefault(); AddUrlParam("NameAsc")}}>Ime Rastuce</Dropdown.Item>
+      <Dropdown.Item  onClick={(event) => {event.preventDefault(); AddUrlParam("NameDesc")}}>Ime Opadajuce</Dropdown.Item>
+      <Dropdown.Item onClick={(event) => {event.preventDefault(); AddUrlParam("Popularity")}}>Popularnost</Dropdown.Item>
+      <Dropdown.Item  onClick={(event) => {event.preventDefault(); AddUrlParam("PriceAsc")}}>Cena Rastuca</Dropdown.Item>
+      <Dropdown.Item  onClick={(event) => {event.preventDefault(); AddUrlParam("PriceDesc")}}>Cena Opadajuca</Dropdown.Item>
     </DropdownButton>
 )}
 
