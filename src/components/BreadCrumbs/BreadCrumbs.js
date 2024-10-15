@@ -8,7 +8,7 @@ function BreadCrumbs({ crumbs = [] }) {
     function RenderCrumbs() {
         return crumbs.map(crumb => {
             return (
-                <Breadcrumb.Item href={crumb.link}>
+                <Breadcrumb.Item key={crumb.link} href={crumb.link}>
                     {crumb.text}
                 </Breadcrumb.Item>
             )

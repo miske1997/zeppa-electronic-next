@@ -12,7 +12,7 @@ function ArticleTabs({ specification = [], description = "" }) {
         console.log(specs);
         return specs.map(spec => {
             return (
-                <tr>
+                <tr key={spec[0]}>
                     <td>{spec[0]}</td>
                     <td>{spec[1]}</td>
                 </tr>

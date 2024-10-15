@@ -49,7 +49,7 @@ function SideCart({ show = false, handleClose = () => { } }) {
     function RenderRow() {
         return articlesInCart.map(article => {
             return (
-                <ArticleItemRow article={article} onCartItemRemoveClick={onCartItemRemoveClick}></ArticleItemRow>
+                <ArticleItemRow key={article.id} article={article} onCartItemRemoveClick={onCartItemRemoveClick}></ArticleItemRow>
             )
 
         })

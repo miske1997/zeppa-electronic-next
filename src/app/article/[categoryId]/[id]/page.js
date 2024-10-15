@@ -63,6 +63,8 @@ async function ArticlePage({ params }) {
         })
     }
     function RenderRelatedArticles(){
+        console.log(relatedArticles);
+        
         return relatedArticles.map(relatedArticle => {
             return (<PopularCard article={relatedArticle}></PopularCard>)
         })
@@ -92,7 +94,7 @@ async function ArticlePage({ params }) {
                 </div>
                 <div className="row article-top justify-content-center">
                     <div className="col article-image-con col-md-6 col-sm-10 col-10">
-                        <img src={article.imageUrl === "" ? "/chip.jpg" : ""} alt="/chip.jpg" rounded></img>
+                        <img src={article.imageUrl === "" ? "/chip.jpg" : ""} alt="/chip.jpg" rounded="true"></img>
                     </div>
                     <div className="col article-description col-md-4 col-10 article-description">
                         <h2 className="fs-1">
@@ -120,7 +122,7 @@ async function ArticlePage({ params }) {
                 </div>
 
                 <div className="row article-tabs justify-content-center">
-                    <div class="col col-md-10 col-10">
+                    <div className="col col-md-10 col-10">
                         <ArticleTabs specification={article.specification} description={article.description}></ArticleTabs>
                     </div>
                 </div>
