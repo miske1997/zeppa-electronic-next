@@ -9,7 +9,6 @@ function PopularCard({onClick = () => {}, articleInCart = false, article = {id: 
 
     function AddToCart(event){
         event.stopPropagation();
-        // dispatch(addArticleToCart({...article, amount: 1}))
     }
 
     return (
@@ -25,7 +24,7 @@ function PopularCard({onClick = () => {}, articleInCart = false, article = {id: 
                         </div>
                         
                         <div style={{flexGrow: "1"}}></div>
-                        <FontAwesomeIcon className='article-cart' onClick={AddToCart} icon={faCartShopping}/>
+                        {/* <FontAwesomeIcon className='article-cart' onClick={AddToCart} icon={faCartShopping}/> */}
                     </div>
 
                 </Card.Body>
