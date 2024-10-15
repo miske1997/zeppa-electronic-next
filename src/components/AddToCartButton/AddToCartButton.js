@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "react-bootstrap";
 
-function AddToCartButton({ articleData }) {
+function AddToCartButton({categoryId = "", articleData }) {
 
     const [items, setItems] = useState(null);
     const [inCart, setInCart] = useState(false)
@@ -63,7 +63,7 @@ function AddToCartButton({ articleData }) {
             items.splice(items.findIndex(i => i.id === articleData.id), 1)
         }
         else{
-            items.push({cost: articleData.cost, name: articleData.name, id: articleData.id, imageUrl: articleData.imageUrl, modifiers: getModifiers(), amount: GetKolicina()})
+            items.push({categoryId: categoryId, cost: articleData.cost, name: articleData.name, id: articleData.id, imageUrl: articleData.imageUrl, modifiers: getModifiers(), amount: GetKolicina()})
         }
         console.log(items);
         setItems([...items])

@@ -113,7 +113,7 @@ async function ArticlePage({ params }) {
                             <input className='kolicina-input' style={{ margin: 0, width: "5rem", textAlign: 'center' }} defaultValue={1} min={1} type="number"></input>
                         </div>
                         <div>
-                            <AddToCartButton articleData={article}></AddToCartButton>
+                            <AddToCartButton categoryId={categoryId} articleData={article}></AddToCartButton>
                             {renderAddToCartButton()}
                         </div>
                     </div>

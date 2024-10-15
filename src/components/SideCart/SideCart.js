@@ -13,10 +13,10 @@ function SideCart({ show = false, handleClose = () => { } }) {
 
     useEffect(() => {
         readCartItems()
-        setInterval(() => {
+        const interval = setInterval(() => {
             readCartItems()
         }, 500);
-        // return () => removeEventListener("storage", storageEvent)
+        return () => clearInterval(interval)
     }, []);
 
     function readCartItems(){

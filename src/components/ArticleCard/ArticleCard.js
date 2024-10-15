@@ -47,7 +47,7 @@ function ArticleCard({ categoryId = "", article = { id: 0, name: '', cost: 0 }, 
                     modifiers[key] = article[key][0]
                 }
             }
-            cartItems.push({cost: article.cost, name: article.name, id: article.id, imageUrl: article.imageUrl, modifiers: modifiers, amount: 1})
+            cartItems.push({categoryId: categoryId, cost: article.cost, name: article.name, id: article.id, imageUrl: article.imageUrl, modifiers: modifiers, amount: 1})
         }
 
         setItems([...cartItems])

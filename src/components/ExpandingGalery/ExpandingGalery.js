@@ -1,4 +1,5 @@
 "use client"
+import Link from "next/link"
 import "./ExpandingGalery.css"
 
 
@@ -6,7 +7,7 @@ const cardsData = [
     {
         img: "https://elektroleum.rs/wp-content/uploads/2024/01/universal-multimeter-voltcraft-vc-440-e-2-e1704546584200.webp",
         title: "Merni Instrumenti",
-        url : "",
+        url : "8V03YkVybTd1vudBmgIH",
     },
     {
         img: "https://elektroleum.rs/wp-content/uploads/2021/11/ERSA-e1704546708198.jpg",
@@ -35,10 +36,10 @@ function ExpandingGalery({}) {
     function RenderCards() {
         return cardsData.map(card => {
             return (
-                <div key={card.img} onClick={() => {}} className="galery-card">
+                <Link href={`browse/${card.url}`} key={card.img} className="galery-card">
                     <img src={card.img}></img>
                     <h3>{card.title}</h3>
-                </div>
+                </Link>
             )
         })
     }

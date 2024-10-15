@@ -1,10 +1,14 @@
+"use client"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Image } from "react-bootstrap";
 import './ArticleItemRow.css'
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import BadgeWithTooltip from "@/components/BadgeWithTooltip/BadgeWithTooltip";
+import { useRouter } from "next/navigation";
 
-function ArticleItemRow({onCartItemRemoveClick = () => {},  article = {name: '', imageSrc: '', amount: 1, cost: 0, modifiers: {}}}) {
+function ArticleItemRow({onCartItemRemoveClick = () => {},  article = {id: "", categoryId: "", name: '', imageSrc: '', amount: 1, cost: 0, modifiers: {}}}) {
+
+    const router = useRouter()
 
     function renderModifiers(){
         let chips = []
@@ -21,7 +25,7 @@ function ArticleItemRow({onCartItemRemoveClick = () => {},  article = {name: '',
         return chips
     }
     return (
-        <tr className="article-row">
+        <tr onClick={() => router.push(`/article/${article.categoryId}/${article.id}`)} className="article-row">
             <td>
                 <Image className='cart-image' src={article.imageSrc ?? "/chip.jpg"}></Image>
             </td>
