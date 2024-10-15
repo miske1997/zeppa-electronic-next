@@ -15,6 +15,13 @@ function BuyForm({ PlaceOrder }) {
         console.log(form[0].value);
         event.preventDefault();
         event.stopPropagation();
+        const cartItems = JSON.parse(localStorage.getItem('cartItems'))
+        if (!cartItems || cartItems.length === 0){
+            const toasts = JSON.parse(localStorage.getItem("tosts"))
+            toasts.push({text: "Nema artikla u korpi", duration: 2000})
+            localStorage.setItem("tosts", JSON.stringify(toasts))
+            return
+        }
         if (form.checkValidity() === true) {
 
             const name = form[0].value
@@ -25,8 +32,10 @@ function BuyForm({ PlaceOrder }) {
             const city = form[5].value
             const state = form[6].value
             const saveDetails = form[7].value
-            PlaceOrder(JSON.parse(localStorage.getItem('cartItems')), { name, lastName, email, address, city, state, saveDetails })
-            localStorage.setItem("tosts", JSON.stringify(JSON.parse(localStorage.getItem("tosts")).push({text: "Kupovina obavljena", duration: 2000})))
+            PlaceOrder(cartItems, { name, lastName, email, address, city, state, saveDetails })
+            const toasts = JSON.parse(localStorage.getItem("tosts"))
+            toasts.push({text: "Kupovina obavljena", duration: 2000})
+            localStorage.setItem("tosts", JSON.stringify(toasts))
             localStorage.setItem("cartItems", JSON.stringify([]))
             
             setTimeout(() => {

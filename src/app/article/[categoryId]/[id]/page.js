@@ -76,7 +76,6 @@ async function ArticlePage({ params }) {
         // else
         //     return (<Button onClick={addToCart} className="m-1">Dodaj u korpu <FontAwesomeIcon icon={faShoppingCart} /></Button>)
     }
-
     return (
         <main className="article-page-main">
             <div className="container">

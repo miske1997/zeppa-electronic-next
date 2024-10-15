@@ -10,6 +10,8 @@ function ToastModal() {
     let canConsumeNext = !show
 
     useEffect(() => {
+        localStorage.setItem("tosts", JSON.stringify([]))
+
         let interval = setInterval(() => {
             if (!canConsumeNext){
                 return
