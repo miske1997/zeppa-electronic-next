@@ -3,16 +3,19 @@ import Card from 'react-bootstrap/Card';
 import './PopularCard.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { useRouter } from 'next/navigation';
 
-function PopularCard({onClick = () => {}, articleInCart = false, article = {id: 0, name: '', cost: 0}, imageSrc = 'chip.jpg'}) {
+function PopularCard({categoryId = "", article = {id: 0, name: '', cost: 0}, imageSrc = 'chip.jpg'}) {
 
+    const router = useRouter()
 
-    function AddToCart(event){
-        event.stopPropagation();
+    function GoToArticle(){
+        router.push(`/article/${article.categoryId ?? categoryId}/${article.id}`)
     }
 
+    console.log(article);
     return (
-            <Card onClick={() => onClick(article)} className="popular-card" >
+            <Card onClick={GoToArticle} className="popular-card" >
                 <Card.Img variant="top" src={`/${imageSrc}`} />
                 <div style={{backgroundColor: "black", height: "1px", width: "98%", margin: "auto"}}></div>
                 <Card.Body>

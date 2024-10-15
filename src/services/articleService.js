@@ -86,7 +86,11 @@ export async function GetArticleassosiations(categoryId ,articleId){
     const querySnapshot = await getDocs(queryResult)
     let data = []
     for (const snapShot of querySnapshot.docs) {
-        data.push(await GetArticleById(snapShot.data().categoryId, snapShot.id))
+        const article = await GetArticleById(snapShot.data().categoryId, snapShot.id)
+        if (typeof article !== "object"){
+            continue
+        }
+        data.push({... article, categoryId: snapShot.data().categoryId})
     }
     if (data.length < 10){
         data = data.concat(await GetPopularArticlesInCategory(categoryId, 10 - data.length))

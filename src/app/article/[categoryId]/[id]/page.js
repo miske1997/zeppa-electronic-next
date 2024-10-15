@@ -65,7 +65,7 @@ async function ArticlePage({ params }) {
     function RenderRelatedArticles(){
 
         return relatedArticles.map(relatedArticle => {
-            return (<PopularCard article={relatedArticle}></PopularCard>)
+            return (<PopularCard categoryId={categoryId} article={relatedArticle}></PopularCard>)
         })
     }
     function renderAddToCartButton() {
