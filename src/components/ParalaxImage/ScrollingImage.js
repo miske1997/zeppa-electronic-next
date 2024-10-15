@@ -22,13 +22,13 @@ function ScrollingImage({children , picPositionPixels = 0, backgroundImageSource
   return (
     <div ref={bgImgRef} className="parallax-main-div" style={{ backgroundImage: `url(${backgroundImageSource})`, backgroundPositionY: `${{ picPositionPixels }}px` }}>
       <div className="textContent" >
-        <p className="first-paragraph" >
+        {/* <p className="first-paragraph" >
           <span className="first-paragraph-first-row">{firstParagraphFirstRow}</span>
           <br />
           <span className="first-paragraph-first-row">{firstParagraphSecondRow}</span>
         </p>
 
-        <p className="second-paragraph" >{secondParagraph}</p>
+        <p className="second-paragraph" >{secondParagraph}</p> */}
         {children}
       </div>
     </div>

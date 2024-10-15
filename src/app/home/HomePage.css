@@ -1,25 +1,29 @@
 
 .category-container{
-    position: absolute;
+    /* position: absolute;
     left: 1.5rem;
     height: 94%;
-    top: 3%;
+    top: 3%; */
     /* overflow-y: scroll;
     overflow-x: visible; */
-    
+    padding-block: 1rem;
+    margin-left: 2rem;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
 }
 
 
 .hero-title{
-    position: absolute;
+    /* position: absolute;
     top: 3rem;
-    left: 25rem;
+    left: 25rem; */
 }
 
 .hero-text{
-    position: absolute;
+    /* position: absolute;
     top: 8rem;
-    left: 25rem;
+    left: 25rem; */
     width: 30%;
     text-align: left;
     text-shadow: 2px #fff;
