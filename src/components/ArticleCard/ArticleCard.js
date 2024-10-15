@@ -9,15 +9,12 @@ import Link from 'next/link';
 
 function ArticleCard({ categoryId = "", article = { id: 0, name: '', cost: 0 }, imageSrc = 'chip.jpg' }) {
 
-    // const dispatch = useDispatch()
-    // const { categoryId } = useParams("categoryId")
     const router = useRouter()
     const [items, setItems] = useState(null);
     const [inCart, setInCart] = useState(false)
 
     useEffect(() => {
         const cartItems = JSON.parse(localStorage.getItem('cartItems'));
-        console.log(cartItems);
 
         if (cartItems) {
             setItems([...cartItems]);
@@ -29,11 +26,10 @@ function ArticleCard({ categoryId = "", article = { id: 0, name: '', cost: 0 }, 
     useEffect(() => {
         if (items === null)
             return
-        console.log(items);
 
         setInCart(items.find(item => item.id === article.id) !== undefined)
-
         localStorage.setItem('cartItems', JSON.stringify(items));
+        
     }, [items]);
 
 
@@ -45,7 +41,13 @@ function ArticleCard({ categoryId = "", article = { id: 0, name: '', cost: 0 }, 
             cartItems.splice(items.findIndex(i => i.id === article.id), 1)
         }
         else {
-            cartItems.push({...article, categoryId: categoryId})
+            let modifiers = {} 
+            for (const key in article) {
+                if (Object.hasOwnProperty.call(article, key) && Array.isArray(article[key])) {
+                    modifiers[key] = article[key][0]
+                }
+            }
+            cartItems.push({cost: article.cost, name: article.name, id: article.id, imageUrl: article.imageUrl, modifiers: modifiers, amount: 1})
         }
 
         setItems([...cartItems])

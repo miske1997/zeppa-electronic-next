@@ -35,11 +35,11 @@ function CartPage() {
         <Container className="cart-page " >
 
             <Row className='justify-content-center  gap-5 gap-lg-2' >
-                <Col xs={{ span: 12, order: 1 }} lg={{ span: 6, order: 1 }}>
+                <Col xs={{ span: 12}} lg={{ span: 6}} md={{ span: 6 }}>
                     <h2 className="my-4 text-2xl">Korpa.</h2>
                     <CartArticleList></CartArticleList>
                 </Col>
-                <Col xs={{ span: 12, order: 2 }} lg={{ span: 4, order: 2 }}>
+                <Col xs={{ span: 12}} lg={{ span: 4 }} md={{ span: 5 }}>
                     <BuyForm PlaceOrder={PlaceOrder}></BuyForm>
                 </Col>
                 {/*TODO try get data from local storage */}
