@@ -25,9 +25,9 @@ function Footer() {
                 </div>
                 <div>
                     <h4>Kontakt</h4>
-                    <p>(018) 4520-455, 4522-814, 4522-965</p>
-                    <p>(018) 4522-660</p>
-                    <p>office@mgelectronic.rs</p>
+                    <p>(018) 069/228/1790</p>
+                    <p>(018) 513 159</p>
+                    <p>zeppaelektronika@gmail.com</p>
                 </div>
                 <div>
                     <h4>Radno Vreme</h4>
