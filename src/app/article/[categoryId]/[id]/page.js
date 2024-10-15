@@ -63,8 +63,7 @@ async function ArticlePage({ params }) {
         })
     }
     function RenderRelatedArticles(){
-        console.log(relatedArticles);
-        
+
         return relatedArticles.map(relatedArticle => {
             return (<PopularCard article={relatedArticle}></PopularCard>)
         })

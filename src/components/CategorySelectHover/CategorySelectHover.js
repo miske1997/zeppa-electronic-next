@@ -9,7 +9,7 @@ function CategorySelectHover({categories = [] }) {
         if (!category.categoryNames)
             return ""
         return category.categoryNames.map((categoryName, index) => {
-            return (<ListGroup.Item>
+            return (<ListGroup.Item key={category.categorys[index]}>
                 <Link href={`/browse/${category.categorys[index]}`}>
                     {categoryName}
                 </Link>
@@ -20,7 +20,7 @@ function CategorySelectHover({categories = [] }) {
     function RenderCategories() {
         return categories.map(categorie => {
             return (
-                <ListGroup.Item className="category-main-name">
+                <ListGroup.Item key={categorie.name} className="category-main-name">
                     {categorie.name}
                     <div className="hover-drawer">
                         {RenderCategoriy(categorie)}    

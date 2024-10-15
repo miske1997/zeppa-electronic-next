@@ -35,7 +35,7 @@ function ExpandingGalery({}) {
     function RenderCards() {
         return cardsData.map(card => {
             return (
-                <div onClick={() => {}} className="galery-card">
+                <div key={card.img} onClick={() => {}} className="galery-card">
                     <img src={card.img}></img>
                     <h3>{card.title}</h3>
                 </div>
