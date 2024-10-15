@@ -8,6 +8,7 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import NavBar from "@/components/NavBar/NavBar";
 import Footer from "@/components/Footer/Footer";
 import { GetMainCategorys } from "@/services/categoryService";
+import ToastModal from "@/components/ToastModal/ToastModal";
 
 
 
@@ -28,6 +29,7 @@ export default async function RootLayout({ children }) {
         <NavBar categories={categories} onLogIn></NavBar>
         {children}
         <Footer></Footer>
+        <ToastModal></ToastModal>
       </body>
     </html>
   );
