@@ -10,3 +10,8 @@
 body {
     overscroll-behavior-y: none;
 }
+
+body a {
+    color: black;
+    text-decoration: none;
+}

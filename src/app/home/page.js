@@ -29,9 +29,11 @@ export default async function HomePage() {
             <ScrollingImage firstParagraphFirstRow='' secondParagraph='' picPositionPixels={-20} backgroundImageSource='https://www.nextpcb.com/uploads/images/202303/20/1679303211-0734-cavktR.jpg'>
                 <div className='category-container'>
                     <CategorySelectHover categories={categories}></CategorySelectHover>
+                    <div className="flex flex-col">
+                        <h1 className='hero-title' >ZEPPA ELEKTRONIKA</h1>
+                        <p className='hero-text'>Sed vel vestibulum dui, in pulvinar elit. Aenean vulputate ante orci, quis maximus diam vehicula malesuada. Ut a turpis efficitur, malesuada nibh a, elementum dolor.</p>
+                    </div>
                 </div>
-                <h1 className='hero-title' >ZEPPA ELEKTRONIKA</h1>
-                <p className='hero-text'>Sed vel vestibulum dui, in pulvinar elit. Aenean vulputate ante orci, quis maximus diam vehicula malesuada. Ut a turpis efficitur, malesuada nibh a, elementum dolor.</p>
             </ScrollingImage>
 
             <div className="text-center text-2xl">

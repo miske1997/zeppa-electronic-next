@@ -2,9 +2,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import "bootstrap/dist/css/bootstrap.min.css"
 
-import { Navbar, Container, Offcanvas, Nav, Form, Button } from 'react-bootstrap';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import NavBar from "@/components/NavBar/NavBar";
 import Footer from "@/components/Footer/Footer";
 import { GetMainCategorys } from "@/services/categoryService";
