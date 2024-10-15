@@ -3,7 +3,7 @@
     text-align: left;
     position: relative;
     min-height: 320px;
-    min-width: 330px;
+    width: 24cqi;
     border-radius: 12px !important;
     overflow: hidden;
 }
@@ -56,4 +56,16 @@
     padding-left: 1rem;
     padding-right: 0.2rem;
     color: white;
+}
+
+@media screen and (max-width: 700px) {
+    .popular-card{
+        width: 53cqi;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .popular-card{
+        width: 98cqi;
+    }
 }

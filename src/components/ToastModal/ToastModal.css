@@ -1,0 +1,27 @@
+
+.tost-modal{
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    min-height: 3rem;
+    background-color: rgb(var(--bs-dark-rgb))!important;;
+    opacity: 0;
+    z-index: 10000;
+    border-radius: 1rem;
+    color: white;
+    transition: all 0.5s ease-in-out;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.tost-modal p{
+    margin: auto;
+}
+
+.tost-modal.show{
+    bottom: 3rem;
+    opacity: 1;
+}

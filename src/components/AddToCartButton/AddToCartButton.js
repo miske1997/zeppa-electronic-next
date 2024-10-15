@@ -70,18 +70,11 @@ function AddToCartButton({ articleData }) {
     }
 
     function getModifiers() {
-        let modifierArray = []
-        for (const key in articleData) {
-            if (Object.hasOwnProperty.call(articleData, key) && Array.isArray(articleData[key])) {
-                modifierArray.push({ name: key, values: articleData[key] })
-            }
-        }
         const modifiersSelected = {}
         let modifierSelects = document.querySelectorAll(".article-modifier") //buttonRef.current.parentElement.
         modifierSelects.forEach(el => {
             modifiersSelected[el.querySelector("input").value] = el.querySelector(".article-modifier-select").value
         })
-        console.log(modifiersSelected);
 
         return modifiersSelected
     }
