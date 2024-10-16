@@ -4,14 +4,63 @@ import { faShoppingCart, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import './ArticlePage.css'
 import PopularCard from "@/components/PopularCard/PopularCard";
 import Carousel from "@/components/Carousel/Carousel";
-import { GetArticleById, GetArticleassosiations } from "@/services/articleService";
+import { GetAllArticlesForCategory, GetArticleById, GetArticleassosiations } from "@/services/articleService";
 import Image from 'next/image';
 import ArticleTabs from '@/components/ArticleTabs/ArticleTabs';
 import ArticleModifier from '@/components/ArticleModifier/ArticleModifier';
 import AddToCartButton from '@/components/AddToCartButton/AddToCartButton';
 import BreadCrumbs from '@/components/BreadCrumbs/BreadCrumbs';
-import { GetCategory } from '@/services/categoryService';
+import { GetAllCategorys, GetCategory } from '@/services/categoryService';
 
+export async function generateStaticParams() {
+    try {
+        const categorys = await GetAllCategorys()
+        if (!categorys || categorys.length === 0){
+            throw new Error(`No categotys found`)
+        }
+        let params = []
+        for (const category of categorys) {
+            const articles = await GetAllArticlesForCategory(category.id)
+            const partialParams = articles.map(article => {
+                return {
+                    id: article.id,
+                    categoryId: category.id
+                }
+            })
+            params = [...params, ...partialParams]
+        }
+        
+        return params
+
+    } catch (error) {
+        console.error("Error fetching categorys: ", error)
+        return []
+    }
+}
+
+export async function generateMetadata(params) {
+    try {
+        const article = await GetArticleById(params.categoryId, params.id)
+        if (!article){
+            return {
+                title: "Nije Pronadjen Artikl",
+                description: "Artikl ne postoji"
+            }
+        }
+
+        return{
+            openGraph: {
+                title: article.name ?? ""
+            }
+        }
+    } catch (error) {
+        console.error(error)
+        return {
+            title: "Nije Pronadjen Artikl",
+            description: "Artikl ne postoji"
+        }
+    }
+}
 
 async function ArticlePage({ params }) {
     // const [amount, setAmmount] = useState(1)

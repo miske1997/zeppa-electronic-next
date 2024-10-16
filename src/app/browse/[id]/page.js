@@ -1,18 +1,59 @@
 import CustomToggle from "@/components/CustomToggle/CustomeToggle";
 import "./BrowsePage.css"
-import { Breadcrumb, Stack } from 'react-bootstrap';
 import GridStyleSelect from "@/components/Helpers/GridStyleSelect/GridStyleSelect";
 import FilterSideBar from "@/components/FilterSideBar/FilterSideBar";
 import FilterChips from "@/components/FilterChips/FilterChips";
 import ArticleGrid from "@/components/ArticleGrid/ArticleGrid";
 import ArticleList from "@/components/ArticleList/ArticleList";
 import TablePagination from "@/components/TablePagination/TablePagination";
-import { GetCategory, GetFiltersForCategory } from "@/services/categoryService";
+import { GetAllCategorys, GetCategory, GetFiltersForCategory } from "@/services/categoryService";
 import { GetAllArticlesForCategory } from "@/services/articleService";
 import MobileFIlterButton from "@/components/MobileFIlterButton/MobileFIlterButton";
 import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 
 
+export async function generateStaticParams() {
+    try {
+        const categorys = await GetAllCategorys()
+        if (!categorys || categorys.length === 0){
+            throw new Error(`No categotys found`)
+        }
+
+        return categorys.map(category => {
+            return {
+                id: category.id
+            }
+        })
+
+    } catch (error) {
+        console.error("Error fetching categorys: ", error)
+        return []
+    }
+}
+
+export async function generateMetadata(params) {
+    try {
+        const category = await GetCategory(params.id)
+        if (!category){
+            return {
+                title: "Nije Pronadjena",
+                description: "Stranica ne postoji"
+            }
+        }
+
+        return{
+            openGraph: {
+                title: category.name ?? ""
+            }
+        }
+    } catch (error) {
+        console.error(error)
+        return {
+            title: "Nije Pronadjena",
+            description: "Stranica ne postoji"
+        }
+    }
+}
 
 const filterMap = {
     NameAsc: (a, b) => a.name > b.name ? 1 : -1,
