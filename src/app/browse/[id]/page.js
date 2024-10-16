@@ -11,6 +11,7 @@ import { GetAllArticlesForCategory } from "@/services/articleService";
 import MobileFIlterButton from "@/components/MobileFIlterButton/MobileFIlterButton";
 import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 
+export const revalidate = 3600
 
 export async function generateStaticParams() {
     try {

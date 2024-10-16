@@ -12,6 +12,8 @@ import AddToCartButton from '@/components/AddToCartButton/AddToCartButton';
 import BreadCrumbs from '@/components/BreadCrumbs/BreadCrumbs';
 import { GetAllCategorys, GetCategory } from '@/services/categoryService';
 
+export const revalidate = 3600
+
 export async function generateStaticParams() {
     try {
         const categorys = await GetAllCategorys()
