@@ -33,10 +33,11 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NavBar categories={categories} onLogIn></NavBar>
+        {/* <NavBar categories={categories} onLogIn></NavBar>
         {children}
         <Footer></Footer>
-        <ToastModal></ToastModal>
+        <ToastModal></ToastModal> */}
+        <h1 style={{position: "fixed", left: "50%", top: "50%", transform: "translateX(-50%)"}}>Stize Uskoro</h1>
       </body>
     </html>
   );
