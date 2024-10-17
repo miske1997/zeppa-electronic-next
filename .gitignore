@@ -15,7 +15,9 @@
 
 # production
 /build
-
+/.next
+/.firebase
+/.github
 # misc
 .DS_Store
 *.pem
