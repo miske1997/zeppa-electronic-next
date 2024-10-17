@@ -32,7 +32,7 @@ export async function generateStaticParams() {
     }
 }
 
-export async function generateMetadata(params) {
+export async function generateMetadata({params}) {
     try {
         const category = await GetCategory(params.id)
         if (!category){
@@ -48,7 +48,7 @@ export async function generateMetadata(params) {
             }
         }
     } catch (error) {
-        console.error(error)
+        console.error("err geting title: " + error)
         return {
             title: "Nije Pronadjena",
             description: "Stranica ne postoji"

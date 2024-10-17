@@ -40,7 +40,7 @@ export async function generateStaticParams() {
     }
 }
 
-export async function generateMetadata(params) {
+export async function generateMetadata({params}) {
     try {
         const article = await GetArticleById(params.categoryId, params.id)
         if (!article){
