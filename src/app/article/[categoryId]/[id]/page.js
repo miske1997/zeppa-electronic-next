@@ -14,31 +14,31 @@ import { GetAllCategorys, GetCategory } from '@/services/categoryService';
 
 export const revalidate = 3600
 
-export async function generateStaticParams() {
-    try {
-        const categorys = await GetAllCategorys()
-        if (!categorys || categorys.length === 0){
-            throw new Error(`No categotys found`)
-        }
-        let params = []
-        for (const category of categorys) {
-            const articles = await GetAllArticlesForCategory(category.id)
-            const partialParams = articles.map(article => {
-                return {
-                    id: article.id,
-                    categoryId: category.id
-                }
-            })
-            params = [...params, ...partialParams]
-        }
+// export async function generateStaticParams() {
+//     try {
+//         const categorys = await GetAllCategorys()
+//         if (!categorys || categorys.length === 0){
+//             throw new Error(`No categotys found`)
+//         }
+//         let params = []
+//         for (const category of categorys) {
+//             const articles = await GetAllArticlesForCategory(category.id)
+//             const partialParams = articles.map(article => {
+//                 return {
+//                     id: article.id,
+//                     categoryId: category.id
+//                 }
+//             })
+//             params = [...params, ...partialParams]
+//         }
         
-        return params
+//         return params
 
-    } catch (error) {
-        console.error("Error fetching categorys: ", error)
-        return []
-    }
-}
+//     } catch (error) {
+//         console.error("Error fetching categorys: ", error)
+//         return []
+//     }
+// }
 
 export async function generateMetadata({params}) {
     try {

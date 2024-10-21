@@ -10,7 +10,7 @@ function Footer() {
             <div className="info">
 
                 <div>
-                    <h4>Pomoc</h4>
+                    <h4>Pomoć</h4>
                     <Link href="/instructions">Uputstvo za kupovinu</Link>
                     <p>Način isporuke</p>
                     <p>Način plaćanja</p>
