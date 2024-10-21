@@ -31,7 +31,7 @@ export default async function HomePage() {
                     <CategorySelectHover categories={categories}></CategorySelectHover>
                     <div className="flex flex-col">
                         <h1 className='hero-title' >ZEPPA ELEKTRONIKA</h1>
-                        <p className='hero-text'>Sed vel vestibulum dui, in pulvinar elit. Aenean vulputate ante orci, quis maximus diam vehicula malesuada. Ut a turpis efficitur, malesuada nibh a, elementum dolor.</p>
+                        <p className='hero-text'></p>
                     </div>
                 </div>
             </ScrollingImage>

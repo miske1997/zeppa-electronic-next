@@ -1,8 +1,49 @@
 .about-page{
     overflow-x: hidden;
+    padding-top: 2rem;
+    width: 100%;
+    min-height: 70vh;
+    padding-inline: 3rem;
+    display: flex;
+}
+
+.about-page .about-row{
+    display: flex;
+    gap: 5rem;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+}
+
+
+.about-page .about-row h1{
+    margin-block: 1rem;
+    font-size: 5rem ;
 }
 
 .img-to-mask{
     mask: url("../../../public/blob.svg");
     mask-repeat: no-repeat;
+    mask-size: contain;
+    mask-position: 50%;
+    height: 50vh;
+}
+
+@media screen and (max-width: 600px) {
+    .img-to-mask{
+        display: none;
+    }
+    .about-page .about-row{
+        gap: 0;
+        align-items: flex-start;
+    }
+    .about-page .about-row h1{
+        margin-block: 0;
+        font-size: 3rem ;
+    }
+
+    .about-page .about-row h2{
+        margin-block: 0;
+        font-size: 1rem ;
+    }
 }

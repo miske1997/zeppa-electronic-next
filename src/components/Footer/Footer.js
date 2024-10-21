@@ -25,14 +25,14 @@ function Footer() {
                 </div>
                 <div>
                     <h4>Kontakt</h4>
-                    <p>(018) 069/228/1790</p>
-                    <p>(018) 513 159</p>
+                    <p>(018) 069/228-0770</p>
+                    <p>(018) 069/228-1790</p>
                     <p>zeppaelektronika@gmail.com</p>
                 </div>
                 <div>
                     <h4>Radno Vreme</h4>
-                    <p>Radnim danom od 8:00 do 20:00</p>
-                    <p>Subotom od 8:00 do 15:00</p>
+                    <p>Radnim danima od 08 - 16h</p>
+                    <p>Vikendom ne radimo </p>
                 </div>
             </div>
             <div className="copyright">Copyright © ZeppaElektronika 2024. Sva prava zadržana.</div>
