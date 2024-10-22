@@ -94,7 +94,7 @@ function FilterSideBar({ filters = [] }) {
 
     return (
         <div className="filter-side-bar">
-            <Accordion alwaysOpen="true" as={"div"} className="filter-accordian" defaultActiveKey={0}>
+            <Accordion alwaysOpen="false" as={"div"} className="filter-accordian">
                 {RenderFilters()}
             </Accordion>
         </div>

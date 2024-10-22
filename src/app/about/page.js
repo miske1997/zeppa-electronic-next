@@ -4,28 +4,18 @@ import "./AboutPage.css"
 function AboutPage() {
 
     return (
-        <Container className="about-page">
-            <Row>
-                <Col style={{ textAlign: "left" }}>
-                    <div style={{ marginTop: "15rem" }}></div>
-                    <h1 style={{ marginBlock: "3rem", fontSize: "90px" }}>Anika panika</h1>
-                    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam porta velit tellus, id feugiat erat viverra in. Pellentesque sed mauris vel metus finibus aliquam.</h2>
-                </Col>
-                <Col lg={6}>
+        <main className="about-page">
+            <div className="about-row" style={{ marginTop: "3rem" }}>
+                <div >
                     <img className="img-to-mask" src="https://www.nextpcb.com/uploads/images/202303/20/1679303211-0734-cavktR.jpg" alt="none"></img>
-                </Col>
-            </Row>
-            <Row>
-                <Col lg={6}>
-                    <img className="img-to-mask" src="https://www.nextpcb.com/uploads/images/202303/20/1679303211-0734-cavktR.jpg" alt="none"></img>
-                </Col>
-                <Col style={{paddingLeft: "4rem", textAlign: "left" }}>
-                    <div style={{ marginTop: "15rem" }}></div>
-                    <h1 style={{ marginBlock: "3rem", fontSize: "90px" }}>Anika panika</h1>
-                    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam porta velit tellus, id feugiat erat viverra in. Pellentesque sed mauris vel metus finibus aliquam.</h2>
-                </Col>
-            </Row>
-        </Container>
+                </div>
+                <div style={{ textAlign: "left" }}>
+                    <div></div>
+                    <h1>Zeppa Elektronika</h1>
+                    <h2>se bavi prodajom elektronskih komponenata i uvozom istih .Sve cene su iskazane u dinarima .PDV je uracunat u cenu .</h2>
+                </div>
+            </div>
+        </main>
     )
 
 }
