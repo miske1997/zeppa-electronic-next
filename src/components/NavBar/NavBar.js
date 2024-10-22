@@ -27,7 +27,7 @@ function NavBar({categories = []}) {
         <>
             <Navbar sticky='top' expand="md" bg='dark' data-bs-theme="dark" className="bg-body-tertiary navbar-main ">
                 <Container fluid className='items-center'>
-                    <Navbar.Brand style={{ fontSize: "inherit" }} href="/home">ZEPPA ELEKTRONIKA</Navbar.Brand>
+                    <Navbar.Brand style={{ fontSize: "inherit" }} href="/">ZEPPA ELEKTRONIKA</Navbar.Brand>
                     <div className='grow'></div>
 
                     <Form className="nav-search-form">
@@ -44,7 +44,7 @@ function NavBar({categories = []}) {
                         </Nav.Link>
                     </Nav>
                     <Nav className="nav-links justify-content-end flex-grow-1 pe-3">
-                        <Link className='nav-link' href="/home" passHref>
+                        <Link className='nav-link' href="/" passHref>
                             Naslovna
                         </Link>
                         <NavDropdown
