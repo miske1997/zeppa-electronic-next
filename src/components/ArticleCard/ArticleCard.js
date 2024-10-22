@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
-function ArticleCard({ categoryId = "", article = { id: 0, name: '', cost: 0 }, imageSrc = 'chip.jpg' }) {
+function ArticleCard({ categoryId = "", article = {imageUrl , id: 0, name: '', cost: 0 }, imageSrc = '/chip.jpg' }) {
 
     const router = useRouter()
     const [items, setItems] = useState(null);
@@ -59,7 +59,7 @@ function ArticleCard({ categoryId = "", article = { id: 0, name: '', cost: 0 }, 
                 {inCart === true ? (<div className='in-cart-icon'>
                     <FontAwesomeIcon className='icon' icon={faCartShopping} />
                 </div>) : ""}
-                <img className='card-img-top' src={`/${imageSrc}`} />
+                <img className='card-img-top' src={`${article.imageUrl === "" ? imageSrc : article.imageUrl}`} />
                 <div style={{ backgroundColor: "black", height: "1px", width: "98%", margin: "auto" }}></div>
                 <div className='card-body'>
                     <div className='card-titlee card-title h5'>{article.name}</div>
