@@ -7,7 +7,7 @@
     max-height: 60vw;
     min-width: 100%;
     display: flex;
- 
+    z-index: 1000;
     align-items: center;
     overflow: hidden;
     background-size: 100% 130%;

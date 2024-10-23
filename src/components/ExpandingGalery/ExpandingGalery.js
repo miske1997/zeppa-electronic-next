@@ -5,29 +5,29 @@ import "./ExpandingGalery.css"
 
 const cardsData = [
     {
-        img: "https://elektroleum.rs/wp-content/uploads/2024/01/universal-multimeter-voltcraft-vc-440-e-2-e1704546584200.webp",
-        title: "Merni Instrumenti",
+        img: "/PopKategorije/Multimer.jpg",
+        title: "Unimari",
         url : "8V03YkVybTd1vudBmgIH",
     },
     {
-        img: "https://elektroleum.rs/wp-content/uploads/2021/11/ERSA-e1704546708198.jpg",
-        title: "Alati i Pribor",
-        url : "",
+        img: "/PopKategorije/Razvojni_Sistemi.jpg",
+        title: "Razvojni Sistemi",
+        url : "CXpIGuO37btTH0CyItxv",
     },
     {
-        img: "https://elektroleum.rs/wp-content/uploads/2023/03/Laboratorijsko-napajanje-3.jpg",
-        title: "",
-        url : "",
+        img: "/PopKategorije/Kondenzator.jpg",
+        title: "Kondenzatori",
+        url : "yW4pTVbk6ol9ZVEw45B6",
     },
     {
-        img: "https://elektroleum.rs/wp-content/uploads/2022/03/MicroBit-ploca-e1704545783894.png",
-        title: "",
-        url : "",
+        img: "/PopKategorije/Relej.webp",
+        title: "Releji",
+        url : "frfXdrpTj7YQB5MJFwWm",
     },
     {
-        img: "https://elektroleum.rs/wp-content/uploads/2024/01/Alat-i-pribor-e1704545849200.jpg",
-        title: "",
-        url : "",
+        img: "/PopKategorije/Otpornici.jpg",
+        title: "Otpornici",
+        url : "wUUdZbvihdFHRq2YZX0e",
     },
 ]
 

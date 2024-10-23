@@ -36,8 +36,9 @@
     text-shadow: 0px 0px 5px #6c757d;
     text-wrap: nowrap;
     position: absolute;
-    top: 2rem;
+    bottom: 2rem;
     left: 50%;
+    font-size: large;
     transform: translateX(-50%);
 }
 
