@@ -54,7 +54,7 @@ function NavBar({categories = []}) {
                             <CategorySelect categories={categories}></CategorySelect>
                         </NavDropdown>
                         <Link className='nav-link' href="/about" passHref>O Nama</Link>
-                        <Link className='nav-link' href="/contact" passHref>Kontakt</Link>
+                        {/* <Link className='nav-link' href="/contact" passHref>Kontakt</Link> */}
                         <Form className="d-flex">
                             <Form.Control
                                 type="search"
@@ -63,8 +63,8 @@ function NavBar({categories = []}) {
                                 aria-label="Search"
                             />
                         </Form>
-                        <Button className="me-2" variant='outline-primary'>Sing In</Button>
-                        <Button className="me-2" onClick={() => setShowLogin(true)}>Log In</Button>
+                        {/* <Button className="me-2" variant='outline-primary'>Sing In</Button>
+                        <Button className="me-2" onClick={() => setShowLogin(true)}>Log In</Button> */}
                         <Nav.Link onClick={() => setShowSideCart(true)}>
                             <FontAwesomeIcon icon={faShoppingCart} />
                         </Nav.Link>
@@ -79,10 +79,10 @@ function NavBar({categories = []}) {
                     >
                         <Offcanvas.Header closeButton>
                             <Offcanvas.Title className='flex flex-nowrap w-5/6' id={`offcanvasNavbarLabel-expand-md`}>
-                                Offcanvas
+                                Zeppa
                                 <div className='grow'></div>
-                                <Button className="me-2" variant='outline-primary'>Sing In</Button>
-                                <Button className="me-2" onClick={() => setShowLogin(true)}>Log In</Button>
+                                {/* <Button className="me-2" variant='outline-primary'>Sing In</Button>
+                                <Button className="me-2" onClick={() => setShowLogin(true)}>Log In</Button> */}
                             </Offcanvas.Title>
                         </Offcanvas.Header>
                         <Offcanvas.Body>
@@ -94,7 +94,7 @@ function NavBar({categories = []}) {
                                     title="Proizvodi"
                                     id={`offcanvasNavbarDropdown-expand-md`}
                                 >
-                                    {/* <CategorySelect onCategoryClick={OnCategoryClick} activeCategory={categoryId} categories={categories}></CategorySelect> */}
+                                <CategorySelect categories={categories}></CategorySelect>
                                     {/* {RenderProducts()} */}
                                 </NavDropdown>
                                 <Link className='nav-link' href="/about" passHref>O Nama</Link>

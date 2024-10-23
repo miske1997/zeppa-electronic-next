@@ -4,30 +4,33 @@
     overflow-y: visible;
     overflow-x: visible;
     overflow: visible;
+    z-index: 500;
     box-shadow: 32px 10px 15px -3px rgba(0, 0, 0, 0.3);
 }
 
 .category-main-name{
     position: relative;
     cursor: pointer;
-
+    z-index: 500;
 }
 
 .hover-drawer:hover{
     background-color: rgb(143, 143, 143) !important;
+    z-index: 100000;
 }
 
 .category-main-name:hover .hover-drawer{
     display: block;
+    z-index: 1000;
 }
 
 .hover-drawer{
     margin: 0;
+    z-index: 100000;
     cursor: pointer;
     box-sizing: border-box;
     display: none;
     position: absolute;
-    z-index: 100;
     right: 0;
     top: -1px;
     transform: translateX(100%);

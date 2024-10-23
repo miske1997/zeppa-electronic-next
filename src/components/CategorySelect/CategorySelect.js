@@ -24,7 +24,7 @@ function CategorySelect({ activeCategory = '', categories = [] }) {
         return category.categoryNames.map((categoryName, index) => {
             return (
             <ListGroup.Item active={IsCategoryActive(categoryName)}>
-                <Link href={`/browse/${category.categorys[index]}`}>
+                <Link style={{color: "inherit"}} href={`/browse/${category.categorys[index]}`}>
                     {categoryName}
                 </Link>
             </ListGroup.Item>)

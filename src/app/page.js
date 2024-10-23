@@ -48,7 +48,9 @@ export default async function HomePage() {
                 <ExpandingGalery></ExpandingGalery>
             </div>
 
-            <div className="text-2xl" style={{ display: "flex", alignItems: "center", flexDirection: "column", width: "100%", justifyContent: "center" }}>
+            {/* SMISLI POPULARNE Artikle */}
+            
+            {/* <div className="text-2xl" style={{ display: "flex", alignItems: "center", flexDirection: "column", width: "100%", justifyContent: "center" }}>
                 <h1 style={{ marginBlock: "3rem" }}>Popular Articles</h1>
                 <div style={{ width: "90%" }}>
                     <Carousel>
@@ -65,7 +67,7 @@ export default async function HomePage() {
                         <PopularCard article={{ name: 'Intel', description: "asdjkln jkdnbsa jkdbnjk", cost: "500" }}></PopularCard>
                     </Carousel>
                 </div>
-            </div>
+            </div> */}
 
             {/* <div className="text-center text-2xl">
                 <h1 style={{ marginBlock: "3rem" }}>Brendovi</h1>
