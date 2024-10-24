@@ -58,7 +58,7 @@ function NavBar({categories = []}) {
                         <Form className="d-flex">
                             <Form.Control
                                 type="search"
-                                placeholder="Search"
+                                placeholder="Pretraga"
                                 className="me-2"
                                 aria-label="Search"
                             />

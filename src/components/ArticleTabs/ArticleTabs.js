@@ -30,14 +30,14 @@ function ArticleTabs({ specification = [], description = "" }) {
             className="mb-3"
             justify
         >
-            <Tab eventKey="specification" title="specification">
+            <Tab eventKey="specification" title="Specifikacija">
                 <Table hover bordered striped>
                     <tbody>
                         {renderSpecifications()}
                     </tbody>
                 </Table>
             </Tab>
-            <Tab eventKey="description" title="Description">
+            <Tab eventKey="description" title="Opis">
                 <div className="text-start p2 fs-5">
                     {description}
                 </div>

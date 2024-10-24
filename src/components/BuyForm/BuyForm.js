@@ -67,17 +67,17 @@ function BuyForm({ PlaceOrder }) {
                 </Row>
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="formGridFirstName">
-                        <Form.Label>First Name</Form.Label>
-                        <Form.Control required placeholder="First Name" />
+                        <Form.Label>Ime</Form.Label>
+                        <Form.Control required placeholder="Ime" />
                         <Form.Control.Feedback type="invalid">
-                            Please write first name.
+                            Molimo unesite ime.
                         </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group as={Col} controlId="formGridLastname">
-                        <Form.Label>Last Name</Form.Label>
-                        <Form.Control required placeholder="Last Name" />
+                        <Form.Label>Prezime</Form.Label>
+                        <Form.Control required placeholder="Prezime" />
                         <Form.Control.Feedback type="invalid">
-                            Please write last name.
+                            Molimo unesite prezime.
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Row>
@@ -85,26 +85,26 @@ function BuyForm({ PlaceOrder }) {
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="formGridEmail">
                         <Form.Label>Email</Form.Label>
-                        <Form.Control required type="email" placeholder="Enter email" />
+                        <Form.Control required type="email" placeholder="Unesite email" />
                         <Form.Control.Feedback type="invalid">
-                            Please write a valid email.
+                            Molimo napisite vayeci email.
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Row>
 
                 <Form.Group className="mb-3" controlId="formGridAddress">
-                    <Form.Label>Address</Form.Label>
-                    <Form.Control required placeholder="1234 Main St" />
+                    <Form.Label>Adresa</Form.Label>
+                    <Form.Control required placeholder="Bulevar 33" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formGridPhone">
-                    <Form.Label>Phone Number</Form.Label>
+                    <Form.Label>Telefon</Form.Label>
                     <Form.Control required placeholder="064-558-412" />
                 </Form.Group>
 
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="formGridCity">
-                        <Form.Label>City</Form.Label>
+                        <Form.Label>Grad</Form.Label>
                         <Form.Control required />
                     </Form.Group>
 
@@ -127,12 +127,8 @@ function BuyForm({ PlaceOrder }) {
             </Form.Group> */}
                 <div className='flex justify-center mt-4'>
                     <Button className='order-buton m-auto' variant="primary" type="submit">
-                        Order
+                        Naruči
                     </Button>
-                    <Button className='order-buton m-auto' variant="primary" type="reset">
-                        reset
-                    </Button>
-
                 </div>
 
             </Form>
