@@ -9,6 +9,23 @@ function AddToCartButton({categoryId = "", articleData }) {
     const buttonRef = useRef()
 
     useEffect(() => {
+        const interval = setInterval(() => {
+            const cartItems = JSON.parse(localStorage.getItem('cartItems'));
+            if (!cartItems){
+                return
+            }
+            const item = cartItems.find(i => i.id === articleData.id)
+            const input = document.querySelector(".kolicina-input")
+            if (!item || document.activeElement === input){
+                return
+            }
+            input.value = item.amount
+
+        }, 500);
+        return () => clearInterval(interval)
+    });
+
+    useEffect(() => {
         const cartItems = JSON.parse(localStorage.getItem('cartItems'));
         console.log(cartItems);
         

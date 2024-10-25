@@ -35,6 +35,9 @@ function SideCart({ show = false, handleClose = () => { } }) {
         setItems([...articlesInCart])
     }
 
+    function onCartItemClick(article){
+        handleClose()
+    }
     function RenderArticles() {
         // return articlesInCart.map(article => {
 
@@ -49,7 +52,7 @@ function SideCart({ show = false, handleClose = () => { } }) {
     function RenderRow() {
         return articlesInCart.map(article => {
             return (
-                <ArticleItemRow key={article.id} article={article} onCartItemRemoveClick={onCartItemRemoveClick}></ArticleItemRow>
+                <ArticleItemRow onItemClick={onCartItemClick} key={article.id} article={article} onCartItemRemoveClick={onCartItemRemoveClick}></ArticleItemRow>
             )
 
         })
@@ -79,7 +82,7 @@ function SideCart({ show = false, handleClose = () => { } }) {
                 <ListGroup className="gap-3 ">
 
                 </ListGroup>
-                <Button onClick={() => { router.push("/cart"); handleClose() }} size="lg" className="mt-3">Order</Button>
+                <Button onClick={() => { router.push("/cart"); handleClose() }} size="lg" className="mt-3">Naruci</Button>
             </Offcanvas.Body>
         </Offcanvas>
 
