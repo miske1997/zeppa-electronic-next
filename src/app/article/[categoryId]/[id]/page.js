@@ -65,39 +65,16 @@ export async function generateMetadata({params}) {
 }
 
 async function ArticlePage({ params }) {
-    // const [amount, setAmmount] = useState(1)
-    // const [modifiers, setModifiers] = useState({})
     let categoryId = params.categoryId
     const article = await GetArticleById(categoryId, params.id)//useSelector(selectArticle)
     const relatedArticles = await GetArticleassosiations(categoryId, params.id)
     const category = await GetCategory(categoryId)
-    const cart = [] //useSelector(selectArticlesInCart)
-
-
-
-
-    // useEffect(() => {
-    //     dispatch(fetchArticleById(categoryId, params))
-    // }, [id, dispatch]);
-    // useEffect(() => {
-    //     getModifiers().forEach(modifier => {
-    //         setModifiers(modifiers => { return { ...modifiers, [modifier.name]: modifier.values[0] } })
-    //     });
-    //     console.log(modifiers);
-    // }, [article]);
-
+    
     function ChangeAmount(change) {
         // setAmmount(amount => {
         //     amount += change
         //     return Math.max(1, amount)
         // })
-    }
-
-    function addToCart() {
-        // dispatch(addArticleToCart({ ...article, imageSrc: "/chip.jpg", amount: amount, modifiers: modifiers }))
-    }
-    function removeFromCart() {
-        // dispatch(removeArticleFromCart(article.id ?? 0))
     }
     function getModifiers() {
         let modifierArray = []

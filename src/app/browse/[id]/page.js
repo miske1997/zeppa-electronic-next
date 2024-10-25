@@ -118,7 +118,7 @@ const BrowsePage = async ({ params, searchParams }) => {
                 <Breadcrumb.Item>{GetMainCategory()}</Breadcrumb.Item>
                 <Breadcrumb.Item>{category.name}</Breadcrumb.Item>
             </Breadcrumb> */}
-            <BreadCrumbs crumbs={[{text: "Pocetna", link: "/home"}, {text: category.name, link: `/browse/${params.id}`}]}></BreadCrumbs>
+            <BreadCrumbs crumbs={[{text: "Pocetna", link: "/"}, {text: category.name, link: `/browse/${params.id}`}]}></BreadCrumbs>
             <div className='name-container'>
                 <p className='category-name'>
                     {category.name}

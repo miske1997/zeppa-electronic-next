@@ -9,7 +9,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    width: 80%;
+    width: 90%;
     align-self: center;
     padding-bottom: 3rem;
     gap: 2rem;
@@ -18,7 +18,7 @@
 .grid-container {
     display: flex;
     flex-direction: row;
-    width: 80%;
+    width: 90%;
     align-self: center;
 }
 
@@ -40,7 +40,7 @@
 }
 
 .bread-crumbs {
-    padding-left: 10%;
+    padding-left: 5%;
     text-decoration: none;
 }
 
