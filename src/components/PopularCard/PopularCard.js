@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/navigation';
 
-function PopularCard({categoryId = "", article = {id: 0, name: '', cost: 0}, imageSrc = 'chip.jpg'}) {
+function PopularCard({categoryId = "", article = {id: 0, name: '', cost: 0}, imageSrc = '/chip.jpg'}) {
 
     const router = useRouter()
 
@@ -16,7 +16,7 @@ function PopularCard({categoryId = "", article = {id: 0, name: '', cost: 0}, ima
     console.log(article);
     return (
             <Card onClick={GoToArticle} className="popular-card" >
-                <Card.Img variant="top" src={`/${imageSrc}`} />
+                <Card.Img style={{objectFit: "contain", paddingInline: "0.5rem"}} variant="top" src={`${article.imageUrl !== "" ? article.imageUrl : imageSrc}`} />
                 <div style={{backgroundColor: "black", height: "1px", width: "98%", margin: "auto"}}></div>
                 <Card.Body>
                     <Card.Title>{article.name}</Card.Title>

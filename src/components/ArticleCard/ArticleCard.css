@@ -18,6 +18,11 @@
 .article-card .card-titlee{
     min-height: 4rem;
 }
+.article-card .card-img-top{
+    padding: 0.5rem;
+    object-fit: contain;
+}
+
 .card-info{
     padding-top: 1rem;
     padding-bottom: 0rem;
