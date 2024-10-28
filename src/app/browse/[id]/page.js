@@ -13,24 +13,24 @@ import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 
 export const revalidate = 3600
 
-// export async function generateStaticParams() {
-//     try {
-//         const categorys = await GetAllCategorys()
-//         if (!categorys || categorys.length === 0){
-//             throw new Error(`No categotys found`)
-//         }
+export async function generateStaticParams() {
+    try {
+        const categorys = await GetAllCategorys()
+        if (!categorys || categorys.length === 0){
+            throw new Error(`No categotys found`)
+        }
 
-//         return categorys.map(category => {
-//             return {
-//                 id: category.id
-//             }
-//         })
+        return categorys.map(category => {
+            return {
+                id: category.id
+            }
+        })
 
-//     } catch (error) {
-//         console.error("Error fetching categorys: ", error)
-//         return []
-//     }
-// }
+    } catch (error) {
+        console.error("Error fetching categorys: ", error)
+        return []
+    }
+}
 
 export async function generateMetadata({params}) {
     try {
