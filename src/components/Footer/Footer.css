@@ -27,10 +27,17 @@
     text-align: left;
 }
 
-.footer .info>div>h4{
+.footer .info>div h4{
     text-align: center;
     padding-bottom: 2rem;
     color: white;
+}
+
+.footer>.info>.kontakt-info-con{
+    display: flex;
+    color: white;
+    flex-direction: row;
+    gap: 25%;
 }
 
 .footer .info p{
@@ -39,6 +46,11 @@
 .footer .info a{
     color: white;
 }
+
+.hilight-text{
+    color: rgb(209, 205, 255) !important;
+}
+
 @media (max-width: 768px){
     
     .footer{
@@ -50,5 +62,13 @@
     
     .footer{
         font-size: 7px;
+    }
+    .footer>.info>.kontakt-info-con{
+        gap: 0.3rem;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .footer .info>div h4{
+        padding-bottom: 0;
     }
 }

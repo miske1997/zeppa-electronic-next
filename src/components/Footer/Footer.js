@@ -12,22 +12,24 @@ function Footer() {
                 <div>
                     <h4>Pomoć</h4>
                     <Link href="/instructions">Uputstvo za kupovinu</Link>
-                    <p>Način isporuke</p>
-                    <p>Način plaćanja</p>
-                    <p>Garancija kvaliteta</p>
-                    <p>Reklamacija</p>
-                    <p>Otkazivanje narudžbine</p>
+                    <p className="hilight-text">Način isporuke</p>
+                    <p className="hilight-text">Način plaćanja</p>
+                    <p className="hilight-text">Garancija kvaliteta</p>
+                    <p className="hilight-text">Reklamacija</p>
+                    <p className="hilight-text">Otkazivanje narudžbine</p>
                 </div>
-                <div>
-                    <h4>Info</h4>
-                    <p>O nama</p>
-                    <Link href="/privacy">Privatnost podataka</Link>
-                </div>
-                <div>
-                    <h4>Kontakt</h4>
-                    <p>(018) 069/228-0770</p>
-                    <p>(018) 069/228-1790</p>
-                    <p>zeppaelektronika@gmail.com</p>
+                <div className="kontakt-info-con">
+                    <div>
+                        <h4>Info</h4>
+                        <Link className="block" href="/about">O nama</Link>
+                        <Link className="block" href="/privacy">Privatnost podataka</Link>
+                    </div>
+                    <div>
+                        <h4>Kontakt</h4>
+                        <p className="hilight-text">069/228-0770</p>
+                        <p className="hilight-text">069/228-1790</p>
+                        <p className="hilight-text">zeppaelektronika@gmail.com</p>
+                    </div>
                 </div>
                 <div>
                     <h4>Radno Vreme</h4>
