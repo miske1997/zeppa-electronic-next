@@ -6,7 +6,7 @@ import "./ExpandingGalery.css"
 const cardsData = [
     {
         img: "/PopKategorije/Multimer.jpg",
-        title: "Unimari",
+        title: "Unimeri",
         url : "8V03YkVybTd1vudBmgIH",
     },
     {
