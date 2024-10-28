@@ -12,7 +12,7 @@ function ArticleTabs({ specification = [], description = "" }) {
         }
         let specs = specification.split("\n")
         specs = specs.map(spec => spec.split(":"))
-        console.log(specs);
+
         return specs.map(spec => {
             return (
                 <tr key={spec[0]}>

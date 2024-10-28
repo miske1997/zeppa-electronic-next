@@ -41,7 +41,6 @@ export async function CreateNewCategory(category, mainCategoryId, filters){
     const collectionRef = collection(db, "category")
     const mainCategoryRef = doc(db, "general", mainCategoryId)
     category.mainCategory = mainCategoryRef
-    console.log(category);
     const data = await addDoc(collectionRef, category)
     SetFiltersForCategory(data.id, filters)
     AddSubCategoryToMainCategory(mainCategoryId, data.id, category.name)
@@ -84,7 +83,6 @@ export async function AddSubCategoryToMainCategory(mainCategoryId,categoryId, ca
     const categoryRef = doc(db, "general", mainCategoryId)
     const mainCategory = await getDoc(categoryRef)
     const data = mainCategory.data()
-    console.log(!Object.hasOwnProperty.call(data, "categoryNames"));
     
     if (!Object.hasOwnProperty.call(data, "categoryNames")){
         data.categoryNames = []

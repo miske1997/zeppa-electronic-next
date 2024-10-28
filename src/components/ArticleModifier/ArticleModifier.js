@@ -3,7 +3,6 @@
 import { Form } from "react-bootstrap";
 
 function ArticleModifier({articleId = "", modifier}) {
-    console.log(modifier);
 
     function UpdateItemInCart(event) {
         const cartItems = JSON.parse(localStorage.getItem('cartItems'));

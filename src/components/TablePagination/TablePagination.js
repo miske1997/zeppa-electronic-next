@@ -14,7 +14,6 @@ function TablePagination({display = false, currentPage = 1, numOfPages = 1}) {
         const end = Math.min(currentPage + 2, numOfPages)
 
         let items = []
-        console.log(currentPage);
         for (let pageNum = start; pageNum <= end; pageNum++) {
             items.push((<Pagination.Item onClick={() => AddUrlParam(pageNum)} active={pageNum == currentPage}>{pageNum}</Pagination.Item>))
         }

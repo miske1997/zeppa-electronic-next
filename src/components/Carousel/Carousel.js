@@ -28,7 +28,6 @@ function Carousel({ children = [], minGap = 50, carouselItems = [] }) {
     const cardWidth = card.clientWidth
 
     const cardsInView = Math.floor(refWidth / cardWidth)
-    console.log(cardsInView);
     const totalGap = refWidth - (cardsInView * cardWidth)
     const gap = (totalGap / cardsInView)
     translateAmount = gap / 2 + cardWidth

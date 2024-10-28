@@ -38,7 +38,6 @@ function FilterSideBar({ filters = [] }) {
         const params = new URLSearchParams(searchParams);
         let filter = params.get(paramName) ?? "";
         const options = filter.split("_")
-        console.log(options);
         
         if (options.length === 1){
             params.delete(paramName)
@@ -61,7 +60,7 @@ function FilterSideBar({ filters = [] }) {
     }
 
     function RenderFilter(filter) {
-        console.log(checkedFilters);
+
         return filter.options.map((option, index) => {
             return (
                 <ListGroup.Item onClick={(event) => { event.preventDefault(); FilterClicked(option, filter.propName) }} >

@@ -12,7 +12,7 @@ function BuyForm({ PlaceOrder }) {
 
     const handleSubmit = (event) => {
         const form = event.currentTarget;
-        console.log(form[0].value);
+
         event.preventDefault();
         event.stopPropagation();
         const cartItems = JSON.parse(localStorage.getItem('cartItems'))

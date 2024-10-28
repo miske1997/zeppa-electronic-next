@@ -13,7 +13,6 @@ function PopularCard({categoryId = "", article = {id: 0, name: '', cost: 0}, ima
         router.push(`/article/${article.categoryId ?? categoryId}/${article.id}`)
     }
 
-    console.log(article);
     return (
             <Card onClick={GoToArticle} className="popular-card" >
                 <Card.Img style={{objectFit: "contain", paddingInline: "0.5rem"}} variant="top" src={`${article.imageUrl !== "" ? article.imageUrl : imageSrc}`} />

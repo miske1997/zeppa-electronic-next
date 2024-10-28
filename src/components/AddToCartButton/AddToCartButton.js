@@ -27,7 +27,6 @@ function AddToCartButton({categoryId = "", articleData }) {
 
     useEffect(() => {
         const cartItems = JSON.parse(localStorage.getItem('cartItems'));
-        console.log(cartItems);
         
         if (cartItems) {
             setItems([...cartItems]);
@@ -40,8 +39,6 @@ function AddToCartButton({categoryId = "", articleData }) {
     useEffect(() => {
         if (items === null)
             return
-
-        console.log(items);
         setInCart(items.find(item => item.id === articleData.id) !== undefined)
         localStorage.setItem('cartItems', JSON.stringify(items));
     }, [items]);
@@ -82,7 +79,6 @@ function AddToCartButton({categoryId = "", articleData }) {
         else{
             items.push({categoryId: categoryId, cost: articleData.cost, name: articleData.name, id: articleData.id, imageUrl: articleData.imageUrl, modifiers: getModifiers(), amount: GetKolicina()})
         }
-        console.log(items);
         setItems([...items])
     }
 

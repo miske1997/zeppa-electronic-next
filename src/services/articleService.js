@@ -47,7 +47,6 @@ export async function IncrementArticleSalesOfCart(articlesInCart){
 
 export async function AddArticleAssosiations(articlesInCart){
     for (const article of articlesInCart) {
-        console.log(article.id);
         articlesInCart.forEach(cartArticle => {
             if (article.id != cartArticle.id){
                 AddArticleAssosiation(article, cartArticle)
