@@ -3,7 +3,7 @@ import { Accordion, ListGroup } from "react-bootstrap";
 import "./CategorySelect.css"
 import Link from "next/link";
 
-function CategorySelect({ activeCategory = '', categories = [] }) {
+function CategorySelect({onCategoryClick = () => {}, activeCategory = '', categories = [] }) {
     
     function GetActiveCategoryIndex() {
         let index = 0;
@@ -23,7 +23,7 @@ function CategorySelect({ activeCategory = '', categories = [] }) {
             return ""
         return category.categoryNames.map((categoryName, index) => {
             return (
-            <ListGroup.Item active={IsCategoryActive(categoryName)}>
+            <ListGroup.Item onClick={onCategoryClick} active={IsCategoryActive(categoryName)}>
                 <Link style={{color: "inherit"}} href={`/browse/${category.categorys[index]}`}>
                     {categoryName}
                 </Link>

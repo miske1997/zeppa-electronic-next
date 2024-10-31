@@ -1,4 +1,6 @@
 .category-select{
     min-width: 20rem;
     border: none;
+    max-height: 60vh;
+    overflow-y: auto;
 }
