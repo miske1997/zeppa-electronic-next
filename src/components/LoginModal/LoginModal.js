@@ -1,12 +1,11 @@
 "use client"
-import { auth } from "@/configs/firebase";
 import { useRef } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { useCreateUserWithEmailAndPassword} from "react-firebase-hooks/auth"
 
 function LoginModal({onClose = () => {}, show = false}) {
     const submitBtnRef = useRef()
-    const [createUser] = useCreateUserWithEmailAndPassword(auth)
+    // const [createUser] = useCreateUserWithEmailAndPassword(auth)
     function triggrSubmit() {
         submitBtnRef.current.click()
     }

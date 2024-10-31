@@ -15,6 +15,7 @@ import SideCart from '../SideCart/SideCart';
 import { useState } from 'react';
 import LoginModal from '../LoginModal/LoginModal';
 import CategorySelect from '../CategorySelect/CategorySelect';
+import SearchBar from '../SearchBar/SearchBar';
 
 function NavBar({categories = []}) {
 
@@ -30,20 +31,24 @@ function NavBar({categories = []}) {
                     <Navbar.Brand style={{ fontSize: "inherit" }} href="/">ZEPPA ELEKTRONIKA</Navbar.Brand>
                     <div className='grow'></div>
 
-                    <Form className="nav-search-form">
+                    <div className="nav-search-form">
+                        <SearchBar></SearchBar>
+                    </div>
+
+                    {/* <Form className="nav-search-form">
                         <Form.Control
                             type="search"
                             placeholder="Search"
                             className="me-2"
                             aria-label="Search"
                         />
-                    </Form>
+                    </Form> */}
                     <Nav className='small-cart-btn'>
                         <Nav.Link className='text-lg mx-3' onClick={() => setShowSideCart(true)}>
                             <FontAwesomeIcon size='large' icon={faShoppingCart} />
                         </Nav.Link>
                     </Nav>
-                    <Nav className="nav-links justify-content-end flex-grow-1 pe-3">
+                    <Nav className="nav-links items-center justify-content-end flex-grow-1 pe-3">
                         <Link className='nav-link' href="/" passHref>
                             Naslovna
                         </Link>
@@ -55,14 +60,15 @@ function NavBar({categories = []}) {
                         </NavDropdown>
                         <Link className='nav-link' href="/about" passHref>O Nama</Link>
                         {/* <Link className='nav-link' href="/contact" passHref>Kontakt</Link> */}
-                        <Form className="d-flex">
+                        <SearchBar className="nav-search-form"></SearchBar>
+                        {/* <Form className="d-flex">
                             <Form.Control
                                 type="search"
                                 placeholder="Pretraga"
                                 className="me-2"
                                 aria-label="Search"
                             />
-                        </Form>
+                        </Form> */}
                         {/* <Button className="me-2" variant='outline-primary'>Sing In</Button>
                         <Button className="me-2" onClick={() => setShowLogin(true)}>Log In</Button> */}
                         <Nav.Link onClick={() => setShowSideCart(true)}>

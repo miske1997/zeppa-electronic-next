@@ -1,0 +1,12 @@
+
+.ais-InstantSearch{
+    height: 80%;
+    width: 12rem;
+    margin-inline: 0.5rem;
+    max-width: 100%;
+}
+
+.search-bar form{
+    border-radius: 5px;
+    height: 100%;
+}
