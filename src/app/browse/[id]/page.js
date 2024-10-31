@@ -10,6 +10,7 @@ import { GetAllCategorys, GetCategory, GetFiltersForCategory } from "@/services/
 import { GetAllArticlesForCategory } from "@/services/articleService";
 import MobileFIlterButton from "@/components/MobileFIlterButton/MobileFIlterButton";
 import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
+import { Suspense } from "react";
 
 export const revalidate = 3600
 
@@ -135,11 +136,13 @@ const BrowsePage = async ({ params, searchParams }) => {
                 <FilterSideBar filters={filters}></FilterSideBar>
                 <div style={{ width: "100%" }}>
                     <FilterChips></FilterChips>
-                    {gridDisplayType === "grid" ?
-                        <ArticleGrid categoryId={params.id} articleList={articlesList.slice((currentPage - 1) * pageSize, Math.min(articlesList.length, (currentPage - 1) * pageSize + pageSize))}></ArticleGrid>
-                        :
-                        <ArticleList categoryId={params.id} articleList={articlesList.slice((currentPage - 1) * pageSize, Math.min(articlesList.length, (currentPage - 1) * pageSize + pageSize))}></ArticleList>
-                    }
+                    <Suspense fallback={(<div style={{height: "80vh"}}></div>)}>
+                        {gridDisplayType === "grid" ?
+                            <ArticleGrid categoryId={params.id} articleList={articlesList.slice((currentPage - 1) * pageSize, Math.min(articlesList.length, (currentPage - 1) * pageSize + pageSize))}></ArticleGrid>
+                            :
+                            <ArticleList categoryId={params.id} articleList={articlesList.slice((currentPage - 1) * pageSize, Math.min(articlesList.length, (currentPage - 1) * pageSize + pageSize))}></ArticleList>
+                        }
+                    </Suspense>
                 </div>
             </div>
             <TablePagination currentPage={currentPage} numOfPages={Math.ceil(articlesList.length / pageSize)}></TablePagination>

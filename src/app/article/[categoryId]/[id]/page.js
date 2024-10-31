@@ -1,11 +1,7 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart, faTrashCan } from '@fortawesome/free-solid-svg-icons';
-
 import './ArticlePage.css'
 import PopularCard from "@/components/PopularCard/PopularCard";
 import Carousel from "@/components/Carousel/Carousel";
 import { GetAllArticlesForCategory, GetArticleById, GetArticleassosiations } from "@/services/articleService";
-import Image from 'next/image';
 import ArticleTabs from '@/components/ArticleTabs/ArticleTabs';
 import ArticleModifier from '@/components/ArticleModifier/ArticleModifier';
 import AddToCartButton from '@/components/AddToCartButton/AddToCartButton';
@@ -52,7 +48,8 @@ export async function generateMetadata({params}) {
 
         return{
             openGraph: {
-                title: article.name ?? ""
+                title: article.name ?? "",
+                images: article.imageUrl ?? "",
             }
         }
     } catch (error) {
@@ -154,7 +151,7 @@ async function ArticlePage({ params }) {
                 </div>
                 <div className="row mt-5 justify-content-center">
                     <div className="col text-center text-2xl">
-                        <h2>Preporuceni Artikli</h2>
+                        <h2>Preporučeni Artikli</h2>
                     </div>
                 </div>
                 <div className="row justify-content-center">
