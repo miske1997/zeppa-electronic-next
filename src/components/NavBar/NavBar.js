@@ -24,6 +24,11 @@ function NavBar({categories = []}) {
 
     const handleHide = () => setShowSideCart(false);
     const handleCloseLogin = () => setShowLogin(false);
+
+    function closeNavBar(){
+        document.querySelector(".btn-close").click()
+    }
+
     return (
         <>
             <Navbar sticky='top' expand="md" bg='dark' data-bs-theme="dark" className="bg-body-tertiary navbar-main ">
@@ -91,16 +96,16 @@ function NavBar({categories = []}) {
                                 <Button className="me-2" onClick={() => setShowLogin(true)}>Log In</Button> */}
                             </Offcanvas.Title>
                         </Offcanvas.Header>
-                        <Offcanvas.Body>
+                        <Offcanvas.Body >
                             <Nav className="justify-content-end flex-grow-1 pe-3">
-                                <Link className='nav-link' href="/home" passHref>
+                                <Link className='nav-link' href="/" passHref>
                                     Naslovna
                                 </Link>
                                 <NavDropdown
                                     title="Proizvodi"
                                     id={`offcanvasNavbarDropdown-expand-md`}
                                 >
-                                <CategorySelect categories={categories}></CategorySelect>
+                                <CategorySelect onCategoryClick={() => closeNavBar()} categories={categories}></CategorySelect>
                                     {/* {RenderProducts()} */}
                                 </NavDropdown>
                                 <Link className='nav-link' href="/about" passHref>O Nama</Link>
@@ -108,7 +113,9 @@ function NavBar({categories = []}) {
                             </Nav>
                         </Offcanvas.Body>
                     </Navbar.Offcanvas>
-
+                    <div className='small-search-con'>
+                        <SearchBar className="nav-search-form"></SearchBar>
+                    </div>
                 </Container>
             </Navbar>
             <LoginModal onClose={handleCloseLogin} show={showLogin}></LoginModal>

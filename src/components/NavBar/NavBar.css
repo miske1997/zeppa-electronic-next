@@ -8,10 +8,18 @@
 
 .nav-offcanvas{
     display: none;
+    overflow-y: auto;
 }
 .small-cart-btn{
     display: none;
 }
+
+.small-search-con{
+    width: 100%;
+    justify-content: center;
+    display: none;
+}
+
 @media (max-width: 1000px){
     
     .navbar-main{
@@ -34,5 +42,19 @@
 
     .nav-offcanvas{
         display: block;
+    }
+}
+
+@media (max-width: 400px) {
+    .small-search-con{
+        margin-block: 0.5rem;
+        display: flex;
+    }
+    .nav-search-form{
+        display: none;
+    }
+
+    .small-search-con .ais-InstantSearch{
+        width: 80%;
     }
 }

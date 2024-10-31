@@ -7,7 +7,7 @@ const algoliaClient = algoliasearch(process.env.NEXT_PUBLIC_ALGOLIA_APPLICATION_
 const searchClient = {
     ...algoliaClient,
     search(requests) {
-      if (requests.every(({ params }) => !params.query)) {
+      if (requests.every(({ params }) => !params.query || params.query.length < 3)) {
         return Promise.resolve({
           results: requests.map(() => ({
             hits: [],

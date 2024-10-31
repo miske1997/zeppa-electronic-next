@@ -55,11 +55,11 @@ function ArticleCard({ categoryId = "", article = {imageUrl , id: 0, name: '', c
 
     return (
         <Link style={{display: "block"}} className='article-card' href={`/article/${categoryId}/${article.id}`} passHref>
-            <div className="card" >
+            <article className="card" >
                 {inCart === true ? (<div className='in-cart-icon'>
                     <FontAwesomeIcon className='icon' icon={faCartShopping} />
                 </div>) : ""}
-                <img className='card-img-top' src={`${article.imageUrl === "" ? imageSrc : article.imageUrl}`} />
+                <img className='card-img-top' alt='article image' src={`${article.imageUrl === "" ? imageSrc : article.imageUrl}`} />
                 <div style={{ backgroundColor: "black", height: "1px", width: "98%", margin: "auto" }}></div>
                 <div className='card-body'>
                     <div className='card-titlee card-title h5'>{article.name}</div>
@@ -74,7 +74,7 @@ function ArticleCard({ categoryId = "", article = {imageUrl , id: 0, name: '', c
                     </div>
 
                 </div>
-            </div>
+            </article>
         </Link>
     );
 }

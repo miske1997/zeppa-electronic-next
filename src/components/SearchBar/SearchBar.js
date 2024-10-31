@@ -1,5 +1,4 @@
 "use client"
-import { liteClient as algoliasearch } from "algoliasearch/lite";
 import { Hit } from "@/components/SearchHit/SearchHit";
 import "instantsearch.css/themes/satellite.css";
 import { Hits, InstantSearch, SearchBox, Configure } from "react-instantsearch";
@@ -14,6 +13,14 @@ export default function SearchBar() {
     const [focused, setFocus] = useState(false)
     const searchRef = useRef()
 
+    function onBlur(){
+         
+        setTimeout(() => {
+            if (searchRef?.current.querySelector("input") === document.activeElement)
+                return
+            setFocus(false)
+        }, 200)
+    }
 
     return (
         <InstantSearch
@@ -21,8 +28,8 @@ export default function SearchBar() {
             indexName="ARTICLE_INDEX"
         >
             <Configure hitsPerPage={8} />
-            <div className="ais-InstantSearch">
-                <SearchBox onBlur={(ev) => setTimeout(() => {setFocus(false)}, 200)} onFocus={() => setFocus(true)} className="search-bar" />
+            <div ref={searchRef} onBlur={(ev) => onBlur()} onFocus={() => setFocus(true)}  className="ais-InstantSearch">
+                <SearchBox className="search-bar" />
                 <Hits style={{ position: "absolute", display: `${!focused ? "none" : "unset"}` }} hitComponent={Hit} />
             </div>
         </InstantSearch>
