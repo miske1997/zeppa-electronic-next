@@ -20,6 +20,7 @@ export async function CreateArticle(categoryId, article){
     return await addDoc(collectionRef, article)
 }
 
+
 export async function DeleteArticle(categoryId, articleId){
     const articleRef = doc(db, "category", categoryId, "articles", articleId)
     return await deleteDoc(articleRef)
